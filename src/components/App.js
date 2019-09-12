@@ -1,10 +1,10 @@
 import React from 'react';
-import HabitForm from './HabitForm/HabitForm';
+import AddHabit from './Containers/AddHabit';
 
 export default function App() {
   return (
     <>
-      <HabitForm/>
+      <AddHabit />
     </>
   );
 }
