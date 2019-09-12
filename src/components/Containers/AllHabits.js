@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import HabitList from '../Profile/HabitList';
+import { getHabits } from '../../services/habitApi';
 
 class AllHabits extends Component {
   static propTypes = {
@@ -27,9 +28,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // TODO: api call to get all habits based on signed in user
   fetch() {
-    dispatch()
+    dispatch(getHabits())
   }
 })
 
