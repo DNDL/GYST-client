@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Checkboxes from './Checkboxes';
-import Slider from './Slider';
 
-function HabitForm({ habitName }) {
+// TODO make button more betterer
+
+function HabitForm() {
+  const [habitName, updateHabitName] = useState('');
+  const [why, updateWhy] = useState('');
+  const [value, updateValue] = useState(10);
+
   return (
-    <form>
+    <form onSubmit={event => {handleSubmit(event, habit)}}>
       <input
         type="text"
         name={habitName}
         value={habitName}
+        onChange={({ target }) => updateHabitName(target.value)}
         placeholder="Habit name..."
       ></input>
 
@@ -29,9 +34,73 @@ function HabitForm({ habitName }) {
         </label>
       </fieldset>
 
-      <Slider />
+      <fieldset>
+        <legend>Times per day</legend>
+        <input
+          type="range"
+          min="1"
+          max="10"
+          onChange={({ target }) => updateValue(target.value)}
+        ></input>
+        <p>{value}</p>
+      </fieldset>
 
-      <Checkboxes />
+      <fieldset>
+        <legend>Track on which days:</legend>
+        <label>
+          S
+          <input type="checkbox" name="sunday" value="sunday" />
+        </label>
+        <label>
+          M
+          <input type="checkbox" name="monday" value="monday" />
+        </label>
+        <label>
+          T
+          <input type="checkbox" name="tueday" value="tueday" />
+        </label>
+        <label>
+          W
+          <input type="checkbox" name="wednesday" value="wednesday" />
+        </label>
+        <label>
+          Th
+          <input type="checkbox" name="thursday" value="thursday" />
+        </label>
+        <label>
+          F
+          <input type="checkbox" name="friday" value="friday" />
+        </label>
+        <label>
+          S
+          <input type="checkbox" name="saturday" value="saturday" />
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Color: </legend>
+        <label>
+          Red
+          <input type="radio" name="color" value="red" />
+        </label>
+        <label>
+          Yellow
+          <input type="radio" name="color" value="yellow" />
+        </label>
+        <label>
+          Blue
+          <input type="radio" name="color" value="blue" />
+        </label>
+      </fieldset>
+
+      <section>
+        <textarea
+          name="why"
+          maxLength="128"
+          placeholder="Declare your Why..."
+        ></textarea>
+      </section>
+      <button>Create</button>
     </form>
   );
 }
