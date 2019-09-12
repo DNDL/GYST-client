@@ -25,6 +25,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.2.3",
     "promise-middleware-redux": "^1.2.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
