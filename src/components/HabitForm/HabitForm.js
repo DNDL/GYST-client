@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 // TODO make button more betterer
 
-function HabitForm() {
-  const [habitName, updateHabitName] = useState('');
+function HabitForm(handleSubmit) {
+  const [title, updateTitle] = useState('');
   const [why, updateWhy] = useState('');
   const [value, updateValue] = useState(10);
 
   return (
-    <form onSubmit={event => {handleSubmit(event, habit)}}>
+    <form onSubmit={event => {handleSubmit(event, { title, why });}}>
       <input
         type="text"
-        name={habitName}
-        value={habitName}
-        onChange={({ target }) => updateHabitName(target.value)}
+        name={title}
+        value={title}
+        onChange={({ target }) => updateTitle(target.value)}
         placeholder="Habit name..."
       ></input>
 
@@ -96,6 +95,8 @@ function HabitForm() {
       <section>
         <textarea
           name="why"
+          value={why}
+          onChange={({ target }) => updateWhy(target.value)}
           maxLength="128"
           placeholder="Declare your Why..."
         ></textarea>
@@ -104,9 +105,5 @@ function HabitForm() {
     </form>
   );
 }
-
-HabitForm.propTypes = {
-  habitName: PropTypes.string.isRequired
-};
 
 export default HabitForm;
