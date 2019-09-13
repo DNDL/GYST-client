@@ -35,6 +35,7 @@ export default function Auth0Provider({
       updateIsAuthenticated(isAuthenticated);
       if(isAuthenticated) {
         const user = await auth0.getUser();
+        // TODO: check db to see if user exists or not, create user if user doesn't exist 
         setUser(user);
       }
       updateLoading(false);
