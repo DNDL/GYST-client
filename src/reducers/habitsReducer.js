@@ -13,4 +13,3 @@ export default function habitsReducer(state = initialState, action) {
   }
 }
 
-// TODO: friend reducer
