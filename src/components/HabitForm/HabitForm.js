@@ -6,11 +6,20 @@ function HabitForm(handleSubmit) {
   const [title, updateTitle] = useState('');
   const [why, updateWhy] = useState('');
   const [value, updateSliderValue] = useState(10);
-  const [daily, updateDaily] = useState('');
-  const [weekly, updateWeekly] = useState('');
-  const [monthly, updateMonthly] = useState('');
+  const [frequency, updateFrequency] = useState();
+  const [sunday, updateSunday] = useState('');
+  const [monday, updateMonday] = useState('');
+  const [tuesday, updateTuesday] = useState('');
+  const [wednesday, updateWednesday] = useState('');
+  const [thursday, updateThursday] = useState('');
+  const [friday, updateFriday] = useState('');
+  const [saturday, updateSaturday] = useState('');
+  const [color, updateColor] = useState();
+  const [red, updateRed] = useState('');
+  const [blue, updateBlue] = useState('');
+  const [yellow, updateYellow] = useState('');
 
-  const habit = { title, why };
+  const habit = { owner, title, why, frequency, goal };
 
   return (
     <form onSubmit={event => {handleSubmit(event, habit);}}>
@@ -23,35 +32,36 @@ function HabitForm(handleSubmit) {
       ></input>
 
       <fieldset>
+        <p>{frequency}</p>
         <legend>Frequency:</legend>
         <label>
           Daily
           <input 
-            onChange={({ target }) => updateDaily(target.value)} 
+            onChange={({ target }) => updateFrequency(target.value)} 
             type="radio" 
             name="frequency" 
-            value={daily} />
+          />
         </label>
         <label>
           Weekly
           <input 
-            onChange={({ target }) => updateWeekly(target.value)}
+            onChange={({ target }) => updateFrequency(target.value)}
             type="radio" 
             name="frequency" 
-            value={weekly} />
+          />
         </label>
         <label>
           Monthly
           <input 
-            onChange={({ target }) => updateMonthly(target.value)}
+            onChange={({ target }) => updateFrequency(target.value)}
             type="radio" 
             name="frequency" 
-            value={monthly} />
+          />
         </label>
       </fieldset>
 
       <fieldset>
-        <legend>Times per day</legend>
+        <legend>Times per:</legend>
         <input
           type="range"
           min="1"
@@ -65,31 +75,59 @@ function HabitForm(handleSubmit) {
         <legend>Hold me accountable on:</legend>
         <label>
           S
-          <input type="checkbox" name="sunday" value="sunday" />
+          <input  
+            onChange={({ target }) => updateSunday(target.value)}
+            type="checkbox" 
+            name="sunday" 
+            value={sunday} />
         </label>
         <label>
           M
-          <input type="checkbox" name="monday" value="monday" />
+          <input  
+            onChange={({ target }) => updateMonday(target.value)}
+            type="checkbox" 
+            name="monday" 
+            value={monday} />
         </label>
         <label>
           T
-          <input type="checkbox" name="tueday" value="tueday" />
+          <input 
+            onChange={({ target }) => updateTuesday(target.value)}
+            type="checkbox" 
+            name="tueday" 
+            value={tuesday} />
         </label>
         <label>
           W
-          <input type="checkbox" name="wednesday" value="wednesday" />
+          <input 
+            onChange={({ target }) => updateWednesday(target.value)}
+            type="checkbox" 
+            name="wednesday"
+            value={wednesday} />
         </label>
         <label>
           Th
-          <input type="checkbox" name="thursday" value="thursday" />
+          <input 
+            onChange={({ target }) => updateThursday(target.value)}
+            type="checkbox" 
+            name="thursday" 
+            value={thursday} />
         </label>
         <label>
           F
-          <input type="checkbox" name="friday" value="friday" />
+          <input 
+            onChange={({ target }) => updateFriday(target.value)}
+            type="checkbox" 
+            name="friday" 
+            value={friday} />
         </label>
         <label>
           S
-          <input type="checkbox" name="saturday" value="saturday" />
+          <input  
+            onChange={({ target }) => updateSaturday(target.value)}
+            type="checkbox" 
+            name="saturday" 
+            value={saturday} />
         </label>
       </fieldset>
 
@@ -97,15 +135,27 @@ function HabitForm(handleSubmit) {
         <legend>Color: </legend>
         <label>
           Red
-          <input type="radio" name="color" value="red" />
+          <input 
+            onChange={({ target }) => updateColor(target.value)}
+            type="radio" 
+            name="color" 
+            value={color} />
         </label>
         <label>
           Yellow
-          <input type="radio" name="color" value="yellow" />
+          <input 
+            onChange={({ target }) => updateColor(target.value)}
+            type="radio" 
+            name="color" 
+            value={color} />
         </label>
         <label>
           Blue
-          <input type="radio" name="color" value="blue" />
+          <input 
+            onChange={({ target }) => updateColor(target.value)}
+            type="radio" 
+            name="color" 
+            value={color} />
         </label>
       </fieldset>
 

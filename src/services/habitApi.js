@@ -3,14 +3,14 @@ export const setToken = newToken => {
   token = newToken;
 };
 
-export const postHabit = ({ title, why }) => {
+export const postHabit = (habit) => {
   return fetch(`${process.env.API_URL}/api/v1/habits`), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     },
-    body: JSON.stringify({ title, why })
+    body: JSON.stringify(habit)
   }
     .then(res => {
       if(res.ok) return res.json();
