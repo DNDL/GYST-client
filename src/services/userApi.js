@@ -4,12 +4,16 @@ export const setToken = newToken => {
 };
 
 export const createUser = (email) => {
-  return fetch(`${process.env.API_URL}/api/v1/users`), {
+  return fetch(`${process.env.API_URL}/api/v1/users`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     },
-    body: JSON.stringify(email)
-  };
+    body: JSON.stringify({ email })
+  })
+    .then(res => {
+      if(!res.ok) throw 'Could not create a habit';
+      return res.json();
+    });
 };
