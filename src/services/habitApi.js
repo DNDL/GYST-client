@@ -11,8 +11,7 @@ export const postHabit = ({ title, why }) => {
     });
 };
 
-export const getHabits = (id) => {
-  // TODO: id stuff for the habit
+export const getHabits = () => {
   return fetch('OUR BACKEND')
     .then(res => {
       if(!res.ok) throw 'Unable to get your habits';
