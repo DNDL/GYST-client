@@ -5,10 +5,15 @@ import React, { useState } from 'react';
 function HabitForm(handleSubmit) {
   const [title, updateTitle] = useState('');
   const [why, updateWhy] = useState('');
-  const [value, updateValue] = useState(10);
+  const [value, updateSliderValue] = useState(10);
+  const [daily, updateDaily] = useState('');
+  const [weekly, updateWeekly] = useState('');
+  const [monthly, updateMonthly] = useState('');
+
+  const habit = { title, why };
 
   return (
-    <form onSubmit={event => {handleSubmit(event, { title, why });}}>
+    <form onSubmit={event => {handleSubmit(event, habit);}}>
       <input
         type="text"
         name={title}
@@ -21,15 +26,27 @@ function HabitForm(handleSubmit) {
         <legend>Frequency:</legend>
         <label>
           Daily
-          <input type="radio" name="frequency" value="daily" />
+          <input 
+            onChange={({ target }) => updateDaily(target.value)} 
+            type="radio" 
+            name="frequency" 
+            value={daily} />
         </label>
         <label>
           Weekly
-          <input type="radio" name="frequency" value="weekly" />
+          <input 
+            onChange={({ target }) => updateWeekly(target.value)}
+            type="radio" 
+            name="frequency" 
+            value={weekly} />
         </label>
         <label>
           Monthly
-          <input type="radio" name="frequency" value="monthly" />
+          <input 
+            onChange={({ target }) => updateMonthly(target.value)}
+            type="radio" 
+            name="frequency" 
+            value={monthly} />
         </label>
       </fieldset>
 
@@ -39,13 +56,13 @@ function HabitForm(handleSubmit) {
           type="range"
           min="1"
           max="10"
-          onChange={({ target }) => updateValue(target.value)}
+          onChange={({ target }) => updateSliderValue(target.value)}
         ></input>
         <p>{value}</p>
       </fieldset>
 
       <fieldset>
-        <legend>Track on which days:</legend>
+        <legend>Hold me accountable on:</legend>
         <label>
           S
           <input type="checkbox" name="sunday" value="sunday" />
