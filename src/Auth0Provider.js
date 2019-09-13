@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import createAuth0Client from '@auth0/auth0-spa-js';
+import { createUser, setToken as setUserToken } from './services/userApi';
+import { setToken as setHabitToken } from './services/habitApi';
 
 const DEFAULT_REDIRECT_CALLBACK = () => {
   window.history.replaceState({}, document.title, window.location.pathname);
@@ -35,8 +37,11 @@ export default function Auth0Provider({
       updateIsAuthenticated(isAuthenticated);
       if(isAuthenticated) {
         const user = await auth0.getUser();
-        // TODO: check db to see if user exists or not, create user if user doesn't exist 
         setUser(user);
+        const claims = await auth0.getIdTokenClaims();
+        setHabitToken(claims.__raw);
+        setUserToken(claims.__raw);
+        createUser(user.email);
       }
       updateLoading(false);
     };
