@@ -6,6 +6,12 @@ export const addHabit = habit => ({
   payload: postHabit(habit)
 });
 
+export const CREATE_HABIT = 'CREATE_HABIT';
+export const createHabit = (title, frequency, goal, why, color, days) => ({
+  type: CREATE_HABIT,
+  payload: { title, frequency, goal, why, color, days }
+});
+
 export const FETCH_HABITS = 'FETCH_HABITS';
 export const fetchHabits = () => ({
   type: FETCH_HABITS,
