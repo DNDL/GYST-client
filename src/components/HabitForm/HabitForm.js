@@ -1,102 +1,103 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 // TODO make button more betterer
 
-function HabitForm(handleSubmit) {
-  const [title, updateTitle] = useState('');
-  const [why, updateWhy] = useState('');
-  const [value, updateValue] = useState(10);
+function HabitForm({ handleSubmit }) {
+  const [form, updateForm] = useState({
+    title: '',
+    frequency: '',
+    goal: 10,
+    why: '',
+    color: '',
+    days: {
+      s: false,
+      m: false,
+      t: false,
+      w: false,
+      th: false,
+      f: false,
+      sa: false
+    }
+  });
+
+  const handleChange = ({ target }) => {
+    const prop = target.name === 'days' ? { days: { ...form.days, [target.value] : target.checked } } : { [target.name] : target.value };
+    updateForm({ ...form, ...prop });
+  };
+
+  const frequencyLabels = ['daily', 'weekly', 'monthly'];
+  const frequencyFieldset = 'frequency';
+
+  const colorLabels = ['red', 'green', 'blue'];
+  const colorFieldset = 'color';
+
+  const createRadioButtons = (arr, fieldset) => {
+    return arr.map(a => (
+      <label key={a}>
+        {a}
+        <input 
+          onChange={() => updateForm({ ...form, [fieldset] : `${a}` })} 
+          type="radio" 
+          name={fieldset} 
+        />
+      </label>
+    ));
+  };
 
   return (
-    <form onSubmit={event => {handleSubmit(event, { title, why });}}>
+    <form onSubmit={event => {
+      event.preventDefault();
+      handleSubmit(event, form);}}>
       <input
         type="text"
-        name={title}
-        value={title}
-        onChange={({ target }) => updateTitle(target.value)}
+        name="title"
+        value={form.title}
+        onChange={handleChange}
         placeholder="Habit name..."
       ></input>
 
       <fieldset>
         <legend>Frequency:</legend>
-        <label>
-          Daily
-          <input type="radio" name="frequency" value="daily" />
-        </label>
-        <label>
-          Weekly
-          <input type="radio" name="frequency" value="weekly" />
-        </label>
-        <label>
-          Monthly
-          <input type="radio" name="frequency" value="monthly" />
-        </label>
+        {createRadioButtons(frequencyLabels, frequencyFieldset)}
       </fieldset>
 
       <fieldset>
-        <legend>Times per day</legend>
+        <legend>Times per:</legend>
         <input
           type="range"
           min="1"
           max="10"
-          onChange={({ target }) => updateValue(target.value)}
+          onChange={({ target }) => updateForm({ ...form, goal: target.value })}
         ></input>
-        <p>{value}</p>
+        <p>{form.goal}</p>
       </fieldset>
 
       <fieldset>
-        <legend>Track on which days:</legend>
-        <label>
-          S
-          <input type="checkbox" name="sunday" value="sunday" />
-        </label>
-        <label>
-          M
-          <input type="checkbox" name="monday" value="monday" />
-        </label>
-        <label>
-          T
-          <input type="checkbox" name="tueday" value="tueday" />
-        </label>
-        <label>
-          W
-          <input type="checkbox" name="wednesday" value="wednesday" />
-        </label>
-        <label>
-          Th
-          <input type="checkbox" name="thursday" value="thursday" />
-        </label>
-        <label>
-          F
-          <input type="checkbox" name="friday" value="friday" />
-        </label>
-        <label>
-          S
-          <input type="checkbox" name="saturday" value="saturday" />
-        </label>
+        <legend>Hold me accountable on:</legend>
+        {Object.keys(form.days).map(day => (
+          <label key={day}>
+            {day}
+            <input  
+              onChange={handleChange}
+              type="checkbox" 
+              name="days" 
+              value={day}
+            />
+          </label>
+        ))}
       </fieldset>
 
       <fieldset>
         <legend>Color: </legend>
-        <label>
-          Red
-          <input type="radio" name="color" value="red" />
-        </label>
-        <label>
-          Yellow
-          <input type="radio" name="color" value="yellow" />
-        </label>
-        <label>
-          Blue
-          <input type="radio" name="color" value="blue" />
-        </label>
+        {createRadioButtons(colorLabels, colorFieldset)}
       </fieldset>
 
       <section>
         <textarea
           name="why"
-          value={why}
-          onChange={({ target }) => updateWhy(target.value)}
+          value={form.why}
+          onChange={handleChange}
           maxLength="128"
           placeholder="Declare your Why..."
         ></textarea>
@@ -105,5 +106,9 @@ function HabitForm(handleSubmit) {
     </form>
   );
 }
+
+HabitForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
+};
 
 export default HabitForm;

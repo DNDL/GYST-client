@@ -4,18 +4,13 @@ exports[`App component renders App 1`] = `
 <Fragment>
   <BrowserRouter>
     <Route
-      component={
-        Object {
-          "$$typeof": Symbol(react.memo),
-          "WrappedComponent": [Function],
-          "compare": null,
-          "displayName": "Connect(HabitForm)",
-          "type": [Function],
-        }
-      }
+      component={[Function]}
+      path="/"
+    />
+    <Route
+      component={[Function]}
       path="/addHabit"
     />
-    <Nav />
   </BrowserRouter>
 </Fragment>
 `;

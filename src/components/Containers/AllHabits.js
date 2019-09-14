@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import HabitList from '../Profile/HabitList';
-import { getHabits } from '../../services/habitApi';
+import HabitList from '../Habit/HabitList';
+import { fetchHabits } from '../../actions/habitActions';
+import { getAllHabits } from '../../selectors/habitSelectors';
 
 class AllHabits extends Component {
   static propTypes = {
@@ -18,22 +19,21 @@ class AllHabits extends Component {
     const { habits } = this.props;
     return (
       <HabitList habits={habits}/>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
-  // TODO: habit selectors
-  habits: 
+  habits: getAllHabits(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   fetch() {
-    dispatch(getHabits())
+    dispatch(fetchHabits());
   }
-})
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AllHabits)
+)(AllHabits);
