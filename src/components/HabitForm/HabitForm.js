@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 // TODO make button more betterer
 
-function HabitForm(handleSubmit) {
+function HabitForm({ handleSubmit }) {
   const [form, updateForm] = useState({
     title: '',
     frequency: '',
@@ -45,7 +46,9 @@ function HabitForm(handleSubmit) {
   };
 
   return (
-    <form onSubmit={event => {handleSubmit(event, form);}}>
+    <form onSubmit={event => {
+      event.preventDefault();
+      handleSubmit(event, form);}}>
       <input
         type="text"
         name="title"
@@ -103,5 +106,9 @@ function HabitForm(handleSubmit) {
     </form>
   );
 }
+
+HabitForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
+};
 
 export default HabitForm;
