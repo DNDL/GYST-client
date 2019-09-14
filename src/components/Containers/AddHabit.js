@@ -4,7 +4,6 @@ import { addHabit } from '../../actions/habitActions';
 
 const mapDispatchToProps = dispatch => ({
   handleSubmit(event, habit) {
-    event.preventDefault();
     dispatch(addHabit(habit));
   }
 });
