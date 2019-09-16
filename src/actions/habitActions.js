@@ -17,7 +17,3 @@ export const fetchHabits = () => ({
   type: FETCH_HABITS,
   payload: getHabits()
 });
-
-
-
-
