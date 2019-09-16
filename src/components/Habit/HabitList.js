@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+// TODO: increment button
+// TODO: display most recent attemps for progress visualization
+
 function HabitList({ habits }) {
   const habitElement = habits.map(habit => (
     <li key={habit._id}>
