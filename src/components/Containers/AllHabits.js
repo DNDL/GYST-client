@@ -8,7 +8,8 @@ import { getAllHabits } from '../../selectors/habitSelectors';
 class AllHabits extends Component {
   static propTypes = {
     habits: PropTypes.array.isRequired,
-    fetch: PropTypes.func.isRequired
+    fetch: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired
   }
 
   componentDidMount() {
@@ -28,8 +29,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch() {
-    dispatch(fetchHabits());
+  fetch(id) {
+    dispatch(fetchHabits(id));
   }
 });
 

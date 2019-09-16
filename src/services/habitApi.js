@@ -18,11 +18,14 @@ export const postHabit = (habit) => {
     .catch(console.log);
 };
 
-export const getHabits = () => {
+export const getHabits = (id) => {
   return fetch(`${process.env.API_URL}/api/v1/habits`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
+    },
+    body: {
+      id
     }
   })
     .then(res => {

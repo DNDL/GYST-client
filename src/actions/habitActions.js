@@ -13,7 +13,7 @@ export const createHabit = (title, frequency, goal, why, color, days) => ({
 });
 
 export const FETCH_HABITS = 'FETCH_HABITS';
-export const fetchHabits = () => ({
+export const fetchHabits = (id) => ({
   type: FETCH_HABITS,
-  payload: getHabits()
+  payload: getHabits(id)
 });
