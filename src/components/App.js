@@ -11,6 +11,7 @@ export default function App() {
       <Router>
         <Route path="/habitDetail/:id" component={withSession(Habit)}/>
         <Route path="/addHabit" component={withSession(FormPage)} />
+        <Route  path="/users/:id" component={withSession(HomePage)} />
         <Route exact path="/" component={withSession(HomePage)} />
       </Router>
     </>
