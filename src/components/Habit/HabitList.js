@@ -1,22 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import HabitListItem from './HabitListItem';
+import { getHabitsByUserId, getAttemptsById } from '../../selectors/habitSelectors';
 
 // TODO: increment button
 // TODO: display most recent attemps for progress visualization
 
-function HabitList({ habits }) {
-  const habitElement = habits.map(habit => (
-    <li key={habit._id}>
-      <Link to={`/habitDetail/${habit._id}`}>{habit.title}</Link>
-    </li>
-  ));
 
-  return <ul>{habitElement}</ul>;
+class HabitList extends Component {
+  static propTypes = {
+    attempts: PropTypes.array.isRequired,
+    habits: PropTypes.array.isRequired
+  }
+
+  render() {
+    const { attempts, habits } = this.props;
+
+    if(!habits[0]) return null;
+    const habitElement = habits[0].map(habit => (
+      <li key={habit._id}>
+        <HabitListItem habit={habit} attempt={attempts}/>
+      </li>
+    ));
+  
+    return <ul>{habitElement}</ul>;
+  }
+
 }
 
-HabitList.propTypes = {
-  habits: PropTypes.array.isRequired
-};
+const mapStateToProps = (state, habitId, userId) => ({
+  attempts: getAttemptsById(state, habitId),
+  habits: getHabitsByUserId(userId)
+});
 
-export default HabitList;
+
+const mapDispatchToProps = dispatch => ({
+  // click handler for incrementing attempt
+
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HabitList);

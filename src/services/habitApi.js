@@ -18,17 +18,15 @@ export const postHabit = (habit) => {
     .catch(console.log);
 };
 
-export const getHabits = (id) => {
+export const getHabits = () => {
   return fetch(`${process.env.API_URL}/api/v1/habits`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
-    },
-    body: {
-      id
     }
   })
     .then(res => {
+      console.log('in getHabits', res);
       if(!res.ok) throw 'Unable to get your habits';
       return res.json();
     });

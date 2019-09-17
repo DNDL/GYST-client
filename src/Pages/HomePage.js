@@ -5,10 +5,11 @@ import FriendDisplay from '../components/Friends/FriendDisplay';
 import AllHabits from '../components/Containers/AllHabits';
 import Nav from '../components/Nav/Nav';
 
-function HomePage({ props }) {
+function HomePage() {
   return (
     <>
-      {props.match.params.id ? <FriendDisplay friend={props.match.params.id} /> : <UserDisplay/> }
+      <UserDisplay />
+      {/* {props.match.params.id ? <FriendDisplay friend={props.match.params.id} /> : <UserDisplay/> } */}
       <AllHabits/>
       <Nav />
     </>
@@ -22,7 +23,7 @@ HomePage.propTypes = {
         id: PropTypes.string.isRequired
       }).isRequired
     }).isRequired
-  }).isRequired
+  })
 };
 
 export default HomePage;

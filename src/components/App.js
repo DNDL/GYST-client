@@ -5,7 +5,7 @@ import { withSession } from '../Auth0Provider';
 import FormPage from '../Pages/FormPage';
 import Habit from './Containers/Habit';
 
-export default function App() {
+function App() {
   return (
     <>
       <Router>
@@ -17,3 +17,5 @@ export default function App() {
     </>
   );
 }
+
+export default withSession(App);

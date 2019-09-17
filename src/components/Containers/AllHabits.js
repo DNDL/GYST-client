@@ -8,8 +8,9 @@ import { getAllHabits } from '../../selectors/habitSelectors';
 class AllHabits extends Component {
   static propTypes = {
     habits: PropTypes.array.isRequired,
+    
     fetch: PropTypes.func.isRequired,
-    id: PropTypes.string.isRequired
+    id: PropTypes.string
   }
 
   componentDidMount() {
@@ -25,7 +26,8 @@ class AllHabits extends Component {
 }
 
 const mapStateToProps = state => ({
-  habits: getAllHabits(state)
+  habits: getAllHabits(state),
+  // progress: getProgress(state)
 });
 
 const mapDispatchToProps = dispatch => ({
