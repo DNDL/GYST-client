@@ -1,4 +1,4 @@
-import { ADD_HABIT, FETCH_HABITS, FETCH_ATTEMPTS_BY_ID } from '../actions/habitActions';
+import { ADD_HABIT, FETCH_HABITS, FETCH_ATTEMPTS } from '../actions/habitActions';
 
 const initialState = {
   habits: [],
@@ -12,8 +12,8 @@ export default function userReducer(state = initialState, action) {
       return { ...state, habits: [...state.habits, action.payload] };
     case FETCH_HABITS:
       return { ...state, habits: action.payload };
-    case FETCH_ATTEMPTS_BY_ID:
-      return { ...state, attempts: [...state.attempts, action.payload] };
+    case FETCH_ATTEMPTS:
+      return { ...state, attempts: action.payload };
     default:
       return state;
   }
