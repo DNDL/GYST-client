@@ -1,7 +1,8 @@
-import { ADD_HABIT, FETCH_HABITS } from '../actions/habitActions';
+import { ADD_HABIT, FETCH_HABITS, FETCH_ATTEMPTS_BY_ID } from '../actions/habitActions';
 
 const initialState = {
-  habits: []
+  habits: [],
+  attempts: []
 };
 
 export default function habitsReducer(state = initialState, action) {
@@ -10,6 +11,8 @@ export default function habitsReducer(state = initialState, action) {
       return { ...state, habits: [...state.habits, action.payload] };
     case FETCH_HABITS:
       return { ...state, habits: [...state.habits, action.payload] };
+    case FETCH_ATTEMPTS_BY_ID:
+      return { ...state, attempts: [...state.attempts, action.payload] };
     default:
       return state;
   }
