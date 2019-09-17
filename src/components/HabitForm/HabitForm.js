@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+
 
 // TODO make button more betterer
+// TODO: redirect to home page
 
-function HabitForm({ handleSubmit }) {
+function HabitForm({ history, props }) {
+  console.log(props);
   const [form, updateForm] = useState({
     title: '',
     frequency: '',
@@ -20,6 +24,7 @@ function HabitForm({ handleSubmit }) {
       sa: false
     }
   });
+
 
   const handleChange = ({ target }) => {
     const prop = target.name === 'days' ? { days: { ...form.days, [target.value] : target.checked } } : { [target.name] : target.value };
@@ -48,7 +53,9 @@ function HabitForm({ handleSubmit }) {
   return (
     <form onSubmit={event => {
       event.preventDefault();
-      handleSubmit(event, form);}}>
+      props.handleSubmit(event, form);
+      history.push('/');
+    }}>
       <input
         type="text"
         name="title"
@@ -108,7 +115,9 @@ function HabitForm({ handleSubmit }) {
 }
 
 HabitForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  props: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
-export default HabitForm;
+export default withRouter(HabitForm);
