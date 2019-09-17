@@ -30,7 +30,7 @@ export const postAttempt = (habitId) => {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     },
-    body: JSON.stringify({ habitId })
+    body: JSON.stringify({ habit: habitId })
   })
     .then(res => {
       if(!res.ok) throw 'unable to post attempt';
