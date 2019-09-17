@@ -6,8 +6,7 @@ import { withRouter } from 'react-router-dom';
 // TODO make button more betterer
 // TODO: redirect to home page
 
-function HabitForm({ history, props }) {
-  console.log(props);
+function HabitForm({ history, handleSubmit }) {
   const [form, updateForm] = useState({
     title: '',
     frequency: '',
@@ -53,7 +52,7 @@ function HabitForm({ history, props }) {
   return (
     <form onSubmit={event => {
       event.preventDefault();
-      props.handleSubmit(event, form);
+      handleSubmit(event, form);
       history.push('/');
     }}>
       <input
@@ -116,7 +115,6 @@ function HabitForm({ history, props }) {
 
 HabitForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  props: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired
 };
 

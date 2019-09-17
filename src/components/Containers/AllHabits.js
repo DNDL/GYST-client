@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import HabitList from '../Habit/HabitList';
-import { fetchHabits } from '../../actions/habitActions';
-import { getAllHabits } from '../../selectors/habitSelectors';
+import { fetchHabits, fetchAttempts } from '../../actions/habitActions';
+import { getAllHabits, getAllAttempts } from '../../selectors/habitSelectors';
 
 class AllHabits extends Component {
   static propTypes = {
     habits: PropTypes.array.isRequired,
-    
+    attempts: PropTypes.array.isRequired,
     fetch: PropTypes.func.isRequired,
     id: PropTypes.string
   }
 
   componentDidMount() {
     this.props.fetch();
+    
   }
 
   render() {
@@ -27,12 +28,13 @@ class AllHabits extends Component {
 
 const mapStateToProps = state => ({
   habits: getAllHabits(state),
-  // progress: getProgress(state)
+  attempts: getAllAttempts(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch(id) {
-    dispatch(fetchHabits(id));
+  fetch() {
+    dispatch(fetchHabits());
+    dispatch(fetchAttempts());
   }
 });
 

@@ -5,14 +5,17 @@ import { withSession } from '../Auth0Provider';
 import FormPage from '../Pages/FormPage';
 import Habit from './Containers/Habit';
 
-function App() {
-  return (
+function App({ loading }) {
+  if(loading) {
+    return null;
+  }
+  return ( 
     <>
       <Router>
-        <Route path="/habitDetail/:id" component={withSession(Habit)}/>
-        <Route path="/addHabit" component={withSession(FormPage)} />
-        <Route  path="/users/:id" component={withSession(HomePage)} />
-        <Route exact path="/" component={withSession(HomePage)} />
+        <Route path="/habitDetail/:id" component={Habit}/>
+        <Route path="/addHabit" component={FormPage} />
+        <Route  path="/users/:id" component={HomePage} />
+        <Route exact path="/" component={HomePage} />
       </Router>
     </>
   );
