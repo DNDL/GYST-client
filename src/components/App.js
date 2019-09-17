@@ -9,10 +9,10 @@ function App() {
   return (
     <>
       <Router>
-        <Route path="/habitDetail/:id" component={withSession(Habit)}/>
-        <Route path="/addHabit" component={withSession(FormPage)} />
-        <Route  path="/users/:id" component={withSession(HomePage)} />
-        <Route exact path="/" component={withSession(HomePage)} />
+        <Route path="/habitDetail/:id" component={Habit}/>
+        <Route path="/addHabit" component={FormPage} />
+        <Route  path="/users/:id" component={HomePage} />
+        <Route exact path="/" component={HomePage} />
       </Router>
     </>
   );
