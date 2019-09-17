@@ -26,6 +26,7 @@ export const getHabits = () => {
     }
   })
     .then(res => {
+      console.log('in getHabits', res);
       if(!res.ok) throw 'Unable to get your habits';
       return res.json();
     });

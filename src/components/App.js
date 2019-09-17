@@ -1,16 +1,21 @@
 import React from 'react'; 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import AddHabit from './Containers/AddHabit';
-import Home from '../Home/Home';
+import HomePage from '../Pages/HomePage';
 import { withSession } from '../Auth0Provider';
+import FormPage from '../Pages/FormPage';
+import Habit from './Containers/Habit';
 
-export default function App() {
+function App() {
   return (
     <>
       <Router>
-        <Route path="/" component={withSession(Home)} />
-        <Route path="/addHabit" component={withSession(AddHabit)} />
+        <Route path="/habitDetail/:id" component={withSession(Habit)}/>
+        <Route path="/addHabit" component={withSession(FormPage)} />
+        <Route  path="/users/:id" component={withSession(HomePage)} />
+        <Route exact path="/" component={withSession(HomePage)} />
       </Router>
     </>
   );
 }
+
+export default withSession(App);
