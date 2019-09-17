@@ -16,6 +16,25 @@ export const postHabit = (habit) => {
     .then(res => {
       if(!res.ok) throw 'unable to post';
       return res.json();
+    })
+    .then(habit => {
+      console.log('in api', habit);
+      postAttempt(habit._id);
+    });
+};
+
+export const postAttempt = (habitId) => {
+  return fetch(`${process.env.API_URL}/api/v1/habits/attempts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ habitId })
+  })
+    .then(res => {
+      if(!res.ok) throw 'unable to post attempt';
+      return res.json();
     });
 };
 
@@ -27,8 +46,20 @@ export const getHabits = () => {
     }
   })
     .then(res => {
-      console.log('in getHabits', res);
       if(!res.ok) throw 'Unable to get your habits';
       return res.json();
     });
 };
+export const getAttempts = () => {
+  return fetch(`${process.env.API_URL}/api/v1/habits/attempts`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+  })
+    .then(res => {
+      if(!res.ok) throw 'Unable to get your attempts';
+      return res.json();
+    });
+};
+
