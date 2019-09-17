@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getAttemptByHabitId } from '../../selectors/habitSelectors';
 
-function HabitListItem({ habit }) {
-  return (
-    <>
-      <Link to={`/habitDetail/${habit._id}`}>{habit.title}</Link>
-      {/* <progress value={attempt.progress} max={habit.goal}></progress> */}
-      <button>Eat me.</button>
-    </>
-  );
+let habit;
+
+class HabitListItem extends Component {
+  static propTypes = {
+    habit: PropTypes.object.isRequired,
+    // attempt: PropTypes.object
+  };
+  render() {
+    // const { attempt } = this.props;
+    habit = this.props.habit;
+    return (
+      <>
+        <Link to={`/habitDetail/${habit._id}`}>
+          <p style={{ color: habit.color }}>{habit.title}</p>
+        </Link>
+        {/* <progress value={attempt.progress} max={habit.goal}></progress> */}
+        <button>Done</button>
+      </>
+    );
+  }
 }
 
-HabitListItem.propTypes = {
-  habit: PropTypes.object.isRequired,
-  attempt: PropTypes.object
+const mapStateToProps = (state, habit) => {
+  console.log('in map state', habit);
+  return { attempt: getAttemptByHabitId(state, habit.habit._id) };
 };
 
-export default HabitListItem;
+export default connect(mapStateToProps)(HabitListItem);

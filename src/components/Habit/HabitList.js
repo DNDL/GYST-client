@@ -6,11 +6,11 @@ import HabitListItem from './HabitListItem';
 // TODO: increment button
 // TODO: display most recent attemps for progress visualization
 
-function HabitList(habits, attempts) {
+function HabitList(habits) {
   console.log('in habitList', habits.habits);
   const habitElement = habits.habits.map(habit => (
     <li key={habit._id}>
-      <HabitListItem habit={habit} attempt={attempts} />
+      <HabitListItem habit={habit}  />
     </li>
   ));
 
@@ -18,8 +18,7 @@ function HabitList(habits, attempts) {
 }
 
 HabitList.propTypes = {
-  habits: PropTypes.array,
-  attempts: PropTypes.array
+  habits: PropTypes.array
 };
 
 export default HabitList;

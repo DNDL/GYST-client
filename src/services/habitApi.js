@@ -16,10 +16,6 @@ export const postHabit = (habit) => {
     .then(res => {
       if(!res.ok) throw 'unable to post';
       return res.json();
-    })
-    .then(habit => {
-      console.log('in api', habit);
-      postAttempt(habit._id);
     });
 };
 
