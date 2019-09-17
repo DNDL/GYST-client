@@ -16,8 +16,8 @@ class AddHabit extends Component {
 
 const mapDispatchToProps = dispatch => ({
   handleSubmit(event, habit) {
-    console.log('in handle submit', habit);
-    dispatch(addHabit(habit));
+    return dispatch(addHabit(habit));
+    // dispatch(addAttempt(habit));
   }
 });
 
