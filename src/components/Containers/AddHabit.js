@@ -6,16 +6,17 @@ import { addHabit } from '../../actions/habitActions';
 
 class AddHabit extends Component {
   static propTypes = {
-    props: PropTypes.object.isRequired
+    handleSubmit: PropTypes.func.isRequired
   }
 
   render() {
-    return <HabitForm props={this.props}/>;
+    return <HabitForm handleSubmit={this.props.handleSubmit}/>;
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   handleSubmit(event, habit) {
+    console.log('in handle submit', habit);
     dispatch(addHabit(habit));
   }
 });
