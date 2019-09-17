@@ -13,7 +13,7 @@ export const withSession = Comp => {
     const { isAuthenticated, loading, auth0Client } = useAuth0();
     if(!isAuthenticated && !loading) auth0Client.loginWithRedirect();
     if(!isAuthenticated) return null;
-    return <Comp {...props} />;
+    return <Comp {...props} loading={loading}/>;
   };
 };
 export default function Auth0Provider({

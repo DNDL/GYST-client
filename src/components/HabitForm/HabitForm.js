@@ -54,8 +54,6 @@ function HabitForm({ history, handleSubmit }) {
       event.preventDefault();
       handleSubmit(event, form);
       history.push('/');
-      setTimeout(() => {
-      }, 3000);
     }}>
       <input
         type="text"
