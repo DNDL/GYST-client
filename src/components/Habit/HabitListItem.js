@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function HabitListItem({ habit, attempt }) {
+function HabitListItem({ habit }) {
   return (
     <>
       <Link to={`/habitDetail/${habit._id}`}>{habit.title}</Link>
-      <progress value={attempt.progress} max={habit.goal}></progress>
+      {/* <progress value={attempt.progress} max={habit.goal}></progress> */}
       <button>Eat me.</button>
     </>
   );
@@ -14,7 +14,7 @@ function HabitListItem({ habit, attempt }) {
 
 HabitListItem.propTypes = {
   habit: PropTypes.object.isRequired,
-  attempt: PropTypes.object.isRequired
+  attempt: PropTypes.object
 };
 
 export default HabitListItem;

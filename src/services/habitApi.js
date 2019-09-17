@@ -4,6 +4,7 @@ export const setToken = newToken => {
 };
 
 export const postHabit = (habit) => {
+  console.log('in service', habit);
   return fetch(`${process.env.API_URL}/api/v1/habits`, {
     method: 'POST',
     headers: {
@@ -13,9 +14,9 @@ export const postHabit = (habit) => {
     body: JSON.stringify({ habit })
   })
     .then(res => {
-      if(res.ok) return res.json();
-    })
-    .catch(console.log);
+      if(!res.ok) throw 'unable to post';
+      return res.json();
+    });
 };
 
 export const getHabits = () => {
