@@ -8,17 +8,19 @@ import { getAllHabits } from '../../selectors/habitSelectors';
 class AllHabits extends Component {
   static propTypes = {
     habits: PropTypes.array.isRequired,
-    
     fetch: PropTypes.func.isRequired,
     id: PropTypes.string
   }
 
   componentDidMount() {
-    this.props.fetch();
+    setTimeout(() => {
+      this.props.fetch();
+    }, 100);
   }
 
   render() {
     const { habits } = this.props;
+    console.log(habits, 'in container');
     return (
       <HabitList habits={habits}/>
     );
@@ -27,12 +29,11 @@ class AllHabits extends Component {
 
 const mapStateToProps = state => ({
   habits: getAllHabits(state),
-  // progress: getProgress(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetch(id) {
-    dispatch(fetchHabits(id));
+  fetch() {
+    dispatch(fetchHabits());
   }
 });
 
