@@ -1,4 +1,4 @@
-import { ADD_HABIT, FETCH_HABITS, FETCH_ATTEMPTS } from '../actions/habitActions';
+import { ADD_HABIT, FETCH_HABITS, FETCH_ATTEMPTS, ADD_ATTEMPT } from '../actions/habitActions';
 
 const initialState = {
   habits: [],
@@ -11,6 +11,8 @@ export default function userReducer(state = initialState, action) {
       return { ...state, habits: [...state.habits, action.payload] };
     case FETCH_HABITS:
       return { ...state, habits: action.payload };
+    case ADD_ATTEMPT:
+      return { ...state, attempts: [...state.attempts, action.payload] };
     case FETCH_ATTEMPTS:
       return { ...state, attempts: action.payload };
     default:
