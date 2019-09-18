@@ -19,7 +19,6 @@ export const postHabit = (habit) => {
 };
 
 export const postAttempt = (habitId, comment)  => {
-  console.log('in post attempt', habitId, comment);
   return fetch(`${process.env.API_URL}/api/v1/habits/attempts`, {
     method: 'POST',
     headers: {

@@ -23,7 +23,6 @@ class HabitListItem extends Component {
 
   
   render() {
-    console.log(this.state);
     const { attempts, habit, handleSubmit } = this.props;
     const { comment } = this.state;
     return (
@@ -43,13 +42,11 @@ class HabitListItem extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log('inside mapstatetoprops', props.habit._id);
   return { attempts: getAttemptsByHabitId(state, props.habit._id) };
 };
 
 const mapDispatchToProps = dispatch => ({
   handleSubmit(e, habit, comment) {
-    console.log(habit);
     e.preventDefault();
     e.target.reset();
     dispatch(addAttempt(habit, comment));
