@@ -1,0 +1,28 @@
+@media only screen 
+and (min-width: 360px) 
+and (max-width: 600px) {
+  .section {
+    border: 2px solid rgb(48, 47, 47);
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+    flex: 1 1 auto;
+    height: 7vh;;
+    margin: auto;
+
+    .progress {
+      height: 100%;
+      width: 40%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 1vw;
+    }
+  }
+
+  p {
+    margin-left: 2vw;
+  }
+}

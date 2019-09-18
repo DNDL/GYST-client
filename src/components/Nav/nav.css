@@ -1,0 +1,26 @@
+
+@media only screen 
+and (min-width: 360px) 
+and (max-width: 600px) {
+  .nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 95vw;
+    margin: 5px auto;
+    box-shadow: 0 0 5px;
+    
+  }
+  
+  .img {
+    border: 2px solid black;
+    border-radius: 15px;
+    margin-left: 5vw;
+    margin: 2vw;
+    box-shadow: 0 0 5px black;
+  }
+}
