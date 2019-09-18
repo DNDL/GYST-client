@@ -18,14 +18,15 @@ export const postHabit = (habit) => {
     });
 };
 
-export const postAttempt = (habitId) => {
+export const postAttempt = (habitId, comment)  => {
+  console.log('in post attempt', habitId, comment);
   return fetch(`${process.env.API_URL}/api/v1/habits/attempts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     },
-    body: JSON.stringify({ habit: habitId })
+    body: JSON.stringify({ habit: habitId, comment })
   })
     .then(res => {
       if(!res.ok) throw 'unable to post attempt';

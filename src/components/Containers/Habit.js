@@ -9,8 +9,6 @@ function timeConverter(timestamp) {
     .format('dddd, MMMM Do YYYY, h:mm a');
 }
 
-
-
 class Habit extends Component {
   static propTypes = {
     habit: PropTypes.shape({
@@ -26,6 +24,7 @@ class Habit extends Component {
     const attemptsElement = attempts.map(attempt => (
       <li key={attempt.createdAt}>
         {timeConverter(attempt.createdAt)}
+        {attempt.comment}
       </li>
     ));
 

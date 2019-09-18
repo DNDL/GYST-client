@@ -13,9 +13,9 @@ export const fetchHabits = () => ({
 });
 
 export const ADD_ATTEMPT = 'ADD_ATTEMPT';
-export const addAttempt = habit => ({
+export const addAttempt = (habit, comment) => ({
   type: ADD_ATTEMPT,
-  payload: postAttempt(habit)
+  payload: postAttempt(habit, comment)
 });
 
 export const FETCH_ATTEMPTS = 'FETCH_ATTEMPTS';
