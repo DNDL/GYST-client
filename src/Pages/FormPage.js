@@ -4,8 +4,7 @@ import AddHabit from '../components/Containers/AddHabit';
 import Nav from '../components/Nav/Nav';
 import Logo from '../components/Logo/Logo';
 
-function FormPage(props) {
-  const { history } = props;
+function FormPage({ history }) {
   return (
     <>
       <Logo />

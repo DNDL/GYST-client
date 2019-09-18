@@ -1,4 +1,4 @@
-import { postHabit, getHabits, getAttempts } from '../services/habitApi';
+import { postHabit, getHabits, getAttempts, postAttempt } from '../services/habitApi';
 
 export const ADD_HABIT = 'ADD_HABIT';
 export const addHabit = habit => ({
@@ -10,6 +10,12 @@ export const FETCH_HABITS = 'FETCH_HABITS';
 export const fetchHabits = () => ({
   type: FETCH_HABITS,
   payload: getHabits()
+});
+
+export const ADD_ATTEMPT = 'ADD_ATTEMPT';
+export const addAttempt = (habit, comment) => ({
+  type: ADD_ATTEMPT,
+  payload: postAttempt(habit, comment)
 });
 
 export const FETCH_ATTEMPTS = 'FETCH_ATTEMPTS';

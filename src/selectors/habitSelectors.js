@@ -1,10 +1,16 @@
-export const getAllHabits = state => state.userHabits.habits;
+export const getAllHabits = state => state.habits.habits;
 
-export const getAllAttempts = state => state.userHabits.attempts;
+export const getHabitById = (state, _id) => {
+  return getAllHabits(state).find(habit => {
+    return _id === habit._id;
+  });
+};
 
-export const getAttemptByHabitId = (state, habit) => {
-  return state.userHabits.attempts
+export const getAllAttempts = state => state.habits.attempts;
+
+export const getAttemptsByHabitId = (state, id) => {
+  return state.habits.attempts
     .filter((attempt) => {
-      return attempt.habit === habit._id;
+      return attempt.habit === id;
     });
 };
