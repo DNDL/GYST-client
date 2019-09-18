@@ -4,6 +4,7 @@ import HomePage from '../Pages/HomePage';
 import { withSession } from '../Auth0Provider';
 import FormPage from '../Pages/FormPage';
 import Habit from './Containers/Habit';
+import AboutUs from '../AboutUs/AboutUs';
 
 function App({ loading }) {
   if(loading) {
@@ -12,6 +13,7 @@ function App({ loading }) {
   return ( 
     <>
       <Router>
+        <Route path="/aboutus" component={AboutUs} />
         <Route path="/habitDetail/:id" component={Habit}/>
         <Route path="/addHabit" component={FormPage} />
         <Route  path="/users/:id" component={HomePage} />
