@@ -4,7 +4,7 @@ describe('habit selectors test', () => {
 
   it('gets all habits from state', () => {
     const state = {
-      userHabits: { habits:
+      habits: { habits:
           [
             { _id: '123', owner: 'def456', title: 'test habit 2', frequency: 'weekly', goal: 1, days: { f: true }, color: 'blue', why: 'WHYYYY' },
             { _id: '456', owner: 'abc123', title: 'test habit 1', frequency: 'daily', goal: 2, days: { m: true }, color: 'red', why: 'fuuudge' }
@@ -21,7 +21,7 @@ describe('habit selectors test', () => {
 
   it('gets a habit by id from state', () => {
     const state = {
-      userHabits: { habits:
+      habits: { habits:
           [
             { _id: '123', owner: 'def456', title: 'test habit 2', frequency: 'weekly', goal: 1, days: { f: true }, color: 'blue', why: 'WHYYYY' },
             { _id: '456', owner: 'abc123', title: 'test habit 1', frequency: 'daily', goal: 2, days: { m: true }, color: 'red', why: 'fuuudge' }
@@ -41,7 +41,7 @@ describe('attempt selectors test', () => {
 
   it('gets all attempts from state', () => {
     const state = {
-      userHabits: { attempts:
+      habits: { attempts:
           [
             { _id: '123', owner: 'abc', habit: '123' },
             { _id: '456', owner: 'def', habit: '456' }
@@ -60,7 +60,7 @@ describe('attempt selectors test', () => {
 
   it('gets all attempts that match a habit\'s id from state', () => {
     const state = {
-      userHabits: { attempts:
+      habits: { attempts:
         [
           { _id: '123', owner: 'abc', habit: '123' },
           { _id: '456', owner: 'abc', habit: '123' },
@@ -70,9 +70,8 @@ describe('attempt selectors test', () => {
       } 
     };
 
-    const habit = getAttemptsByHabitId(state, { _id: '123', owner: 'abc', title: 'test habit 1', frequency: 'daily', goal: 2, days: { m: true }, color: 'red', why: 'fuuudge' }
-    );
-    expect(habit).toEqual([
+    const attempts = getAttemptsByHabitId(state, '123');
+    expect(attempts).toEqual([
       { _id: '123', owner: 'abc', habit: '123' },
       { _id: '456', owner: 'abc', habit: '123' },
     ]);

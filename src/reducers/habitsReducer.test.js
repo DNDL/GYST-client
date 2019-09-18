@@ -1,5 +1,5 @@
-import userReducer from './userReducer';
-import { addHabit, getHabits, fetchHabits, getAttempts, fetchAttempts } from '../actions/habitActions';
+import habitsReducer from './habitsReducer';
+import { addHabit, fetchHabits, fetchAttempts } from '../actions/habitActions';
 
 jest.mock('../services/habitApi.js', () => ({
   postHabit: () => ({ _id: '123', owner: 'def456', title: 'test habit 2', frequency: 'weekly', goal: 1, days: { f: true }, color: 'blue', why: 'WHYYYY' }),
@@ -13,7 +13,7 @@ jest.mock('../services/habitApi.js', () => ({
   ])
 }));
 
-describe('userReducer', () => {
+describe('habitsReducer', () => {
 
   it('returns default state', () => {
 
@@ -27,7 +27,7 @@ describe('userReducer', () => {
       payload: 'loss.jpeg'
     };
 
-    const newState = userReducer(state, action);
+    const newState = habitsReducer(state, action);
     expect(newState).toEqual(state);
   });
 
@@ -40,7 +40,7 @@ describe('userReducer', () => {
 
     const action = addHabit({ _id: '123', owner: 'def456', title: 'test habit 2', frequency: 'weekly', goal: 1, days: { f: true }, color: 'blue', why: 'WHYYYY' });
     
-    const newState = userReducer(state, action);
+    const newState = habitsReducer(state, action);
     expect(newState).toEqual({ 
       habits: [
         { _id: '123', owner: 'def456', title: 'test habit 2', frequency: 'weekly', goal: 1, days: { f: true }, color: 'blue', why: 'WHYYYY' }
@@ -57,7 +57,7 @@ describe('userReducer', () => {
 
     const action = fetchHabits();
 
-    const newState = userReducer(state, action);
+    const newState = habitsReducer(state, action);
     expect(newState).toEqual({ 
       habits: [
         { _id: '123', owner: 'def456', title: 'test habit 2', frequency: 'weekly', goal: 1, days: { f: true }, color: 'blue', why: 'WHYYYY' },
@@ -75,8 +75,8 @@ describe('userReducer', () => {
     };
 
     const action = fetchAttempts();
-    
-    const newState = userReducer(state, action);
+
+    const newState = habitsReducer(state, action);
     expect(newState).toEqual({ 
       habits: [], 
       attempts: [
