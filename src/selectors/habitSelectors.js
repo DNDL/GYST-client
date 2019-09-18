@@ -1,8 +1,8 @@
 export const getAllHabits = state => state.userHabits.habits;
 
-export const getHabitById = (state, id) => {
+export const getHabitById = (state, _id) => {
   return getAllHabits(state).filter(habit => {
-    return id === habit._id;
+    return _id === habit._id;
   });
 };
 
