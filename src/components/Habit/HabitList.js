@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import HabitListItem from './HabitListItem';
+import HabitListItem from '../Containers/HabitListItem';
 
 // TODO: increment button
 // TODO: display most recent attemps for progress visualization
