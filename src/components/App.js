@@ -12,7 +12,7 @@ function App({ loading }) {
   return ( 
     <>
       <Router>
-        <Route path="/habitDetail/:id" component={HabitDetailPage}/>
+        <Route path="/habitDetail/:_id" component={HabitDetailPage}/>
         <Route path="/addHabit" component={FormPage} />
         <Route  path="/users/:id" component={HomePage} />
         <Route exact path="/" component={HomePage} />
