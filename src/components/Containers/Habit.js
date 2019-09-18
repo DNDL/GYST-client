@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getHabitById, getAttemptsByHabitId } from '../../selectors/habitSelectors';
+import moment from 'moment';
+
+function timeConverter(timestamp) {
+  return moment(timestamp)
+    .format('dddd, MMMM Do YYYY, h:mm:ss a');
+}
+
 
 
 class Habit extends Component {
@@ -18,7 +25,7 @@ class Habit extends Component {
 
     const attemptsElement = attempts.map(attempt => (
       <li key={attempt.createdAt}>
-        {attempt.createdAt}
+        {timeConverter(attempt.createdAt)}
       </li>
     ));
 

@@ -21,6 +21,7 @@ class HabitListItem extends Component {
           <p style={{ color: habit.color }}>{habit.title}</p>
           <p>{attempts.length}/{habit.goal}</p>
         </Link>
+        <textarea placeholder="comment..."></textarea>
         {/* <progress value={attempt.progress} max={habit.goal}></progress> */}
         <button onClick={() => handleClick(habit._id)}>Done</button>
       </>
