@@ -6,7 +6,7 @@ import moment from 'moment';
 
 function timeConverter(timestamp) {
   return moment(timestamp)
-    .format('dddd, MMMM Do YYYY, h:mm:ss a');
+    .format('dddd, MMMM Do YYYY, h:mm a');
 }
 
 
