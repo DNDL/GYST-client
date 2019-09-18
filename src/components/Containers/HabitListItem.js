@@ -29,7 +29,7 @@ class HabitListItem extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  attempts: getAttemptsByHabitId(state, props)
+  attempts: getAttemptsByHabitId(state, props.habit._id)
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -8,10 +8,9 @@ export const getHabitById = (state, _id) => {
 
 export const getAllAttempts = state => state.habits.attempts;
 
-export const getAttemptsByHabitId = (state, props) => {
-  const { habit } = props;
+export const getAttemptsByHabitId = (state, id) => {
   return state.habits.attempts
     .filter((attempt) => {
-      return attempt.habit === habit._id;
+      return attempt.habit === id;
     });
 };

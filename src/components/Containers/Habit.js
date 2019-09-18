@@ -1,24 +1,32 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getHabitById } from '../../selectors/habitSelectors';
+import { getHabitById, getAttemptsByHabitId } from '../../selectors/habitSelectors';
 
 
 class Habit extends Component {
   static propTypes = {
     habit: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      why: PropTypes.string.isRequired
-    }).isRequired
+      title: PropTypes.string,
+      why: PropTypes.string
+    }).isRequired,
+    attempts: PropTypes.array
   }
 
   render() {
-    const { title, why } = this.props.habit;
+    const { habit, attempts } = this.props;
+
+    const attemptsElement = attempts.map(attempt => (
+      <li key={attempt.createdAt}>
+        {attempt.createdAt}
+      </li>
+    ));
+
     return (
       <section>
-        <h3>{title}</h3>
-        <p>{why}</p>
-        <p>DATA VISUALIZATION</p>
+        <h3>{habit.title}</h3>
+        <p>{habit.why}</p>
+        <ul>{attemptsElement}</ul>
         <button>Edit</button>
       </section>
     );
@@ -26,7 +34,8 @@ class Habit extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  habit: getHabitById(state, props.props.match.params._id)
+  habit: getHabitById(state, props.props.match.params._id),
+  attempts: getAttemptsByHabitId(state, props.props.match.params._id)
 });
 
 export default connect(
