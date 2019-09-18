@@ -6,7 +6,6 @@ const initialState = {
 };
 
 export default function userReducer(state = initialState, action) {
-  console.log('action payload', action.payload);
   switch(action.type) {
     case ADD_HABIT:
       return { ...state, habits: [...state.habits, action.payload] };

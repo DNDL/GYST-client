@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav component renders Nav 1`] = `
+<nav>
+  <Link
+    to="/"
+  >
+    <img
+      src="../../../assets/home.png"
+    />
+  </Link>
+  <Link
+    to="/addHabit"
+  >
+    <img
+      src="../../../assets/add.png"
+    />
+  </Link>
+  <Link
+    to="/friendsList"
+  >
+    <img
+      src="../../../assets/multiple-users-silhouette.png"
+    />
+  </Link>
+</nav>
+`;

@@ -1,11 +1,34 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import HabitDetailItem from '../Habit/HabitDetailItem';
-import { getHabitsByUserId } from '../../selectors/habitSelectors';
+import { getHabitById } from '../../selectors/habitSelectors';
+
+
+class Habit extends Component {
+  static propTypes = {
+    habit: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      why: PropTypes.string.isRequired
+    }).isRequired
+  }
+
+  render() {
+    const { title, why } = this.props.habit;
+    return (
+      <section>
+        <h3>{title}</h3>
+        <p>{why}</p>
+        <p>DATA VISUALIZATION</p>
+        <button>Edit</button>
+      </section>
+    );
+  }
+}
 
 const mapStateToProps = (state, props) => ({
-  habit: getHabitsByUserId(state, props.match.params._id)
+  habit: getHabitById(state, props.props.match.params._id)
 });
 
 export default connect(
   mapStateToProps
-)(HabitDetailItem);
+)(Habit);

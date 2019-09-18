@@ -4,7 +4,6 @@ export const setToken = newToken => {
 };
 
 export const postHabit = (habit) => {
-  console.log('in service', habit);
   return fetch(`${process.env.API_URL}/api/v1/habits`, {
     method: 'POST',
     headers: {
