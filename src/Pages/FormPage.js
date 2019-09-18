@@ -1,10 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AddHabit from '../components/Containers/AddHabit';
 import Nav from '../components/Nav/Nav';
 
-export default function FormPage(props) {
-  const { history } = props;
-  console.log(props);
+function FormPage({ history }) {
   return (
     <>
       <AddHabit props={history}/>
@@ -12,3 +11,9 @@ export default function FormPage(props) {
     </>
   );
 }
+
+FormPage.propTypes = {
+  history: PropTypes.object
+};
+
+export default FormPage;
