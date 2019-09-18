@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import userHabits from './userReducer';
+import habits from './habitsReducer';
 
 export default combineReducers({
-  userHabits,
+  habits
 });
