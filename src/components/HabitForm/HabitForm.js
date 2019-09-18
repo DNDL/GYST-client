@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-
-
-// TODO make button more betterer
-// TODO: redirect to home page
+import Slider from '@material-ui/core/Slider';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 function HabitForm({ history, handleSubmit }) {
   const [form, updateForm] = useState({
@@ -13,7 +12,7 @@ function HabitForm({ history, handleSubmit }) {
     goal: 10,
     why: '',
     color: '',
-    days: {
+    days: {      // TODO figure out what the data looks like. I want to display capitol letters
       s: false,
       m: false,
       t: false,
@@ -23,19 +22,19 @@ function HabitForm({ history, handleSubmit }) {
       sa: false
     }
   });
-
-
+  
+  
   const handleChange = ({ target }) => {
     const prop = target.name === 'days' ? { days: { ...form.days, [target.value] : target.checked } } : { [target.name] : target.value };
     updateForm({ ...form, ...prop });
   };
-
+  
   const frequencyLabels = ['daily', 'weekly', 'monthly'];
   const frequencyFieldset = 'frequency';
-
+  
   const colorLabels = ['red', 'green', 'blue'];
   const colorFieldset = 'color';
-
+  
   const createRadioButtons = (arr, fieldset) => {
     return arr.map(a => (
       <label key={a}>
@@ -49,19 +48,26 @@ function HabitForm({ history, handleSubmit }) {
     ));
   };
 
+
+  console.log('form', form);
   return (
     <form onSubmit={event => {
       event.preventDefault();
       handleSubmit(event, form);
       history.push('/');
     }}>
-      <input
-        type="text"
-        name="title"
+
+      <TextField
+        id="outlined-controlled"
+        label="Habit"
+        onChange={(e) => {
+          updateForm({ ...form, title: e.target.value });
+        }}
         value={form.title}
-        onChange={handleChange}
-        placeholder="Habit name..."
-      ></input>
+        margin="normal"
+        variant="outlined"
+        defaultValue=""
+      />
 
       <fieldset>
         <legend>Frequency:</legend>
@@ -70,13 +76,15 @@ function HabitForm({ history, handleSubmit }) {
 
       <fieldset>
         <legend>Times per:</legend>
-        <input
-          type="range"
-          min="1"
-          max="10"
-          onChange={({ target }) => updateForm({ ...form, goal: target.value })}
-        ></input>
-        <p>{form.goal}</p>
+        <Slider
+          defaultValue={1}
+          step={1}
+          marks
+          min={1}
+          max={10}
+          onChange={(e, val) => updateForm({ ...form, goal: val })}
+          valueLabelDisplay="auto"
+        />
       </fieldset>
 
       <fieldset>
@@ -108,7 +116,7 @@ function HabitForm({ history, handleSubmit }) {
           placeholder="Declare your Why..."
         ></textarea>
       </section>
-      <button>Create</button>
+      <Button type="submit" variant="contained" size="small" color="primary">submit</Button>
     </form>
   );
 }
