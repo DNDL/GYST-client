@@ -15,14 +15,24 @@ and (max-width: 600px) {
     margin: 10px 0 10px 0;
   }
 
+  .ulWrapper {
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  li {
+    text-align: center;
+  }
+
   .ul {
-    margin: 0;
-    padding: 0;
+    margin: 0 auto;
+    padding: 20px;
     overflow: auto;
     height: 100vh;
     border: 1px solid white;
     border-radius: 15px;
     box-shadow: 0 0 5px;
+    list-style: none;
   }
 
   p {

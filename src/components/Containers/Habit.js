@@ -26,7 +26,7 @@ class Habit extends Component {
     const attemptsElement = attempts.map(attempt => (
       <li key={attempt.createdAt}>
         {timeConverter(attempt.createdAt)}
-        {attempt.comment}
+        <p>comment: {attempt.comment}</p>
       </li>
     ));
 
@@ -42,7 +42,10 @@ class Habit extends Component {
           </div>
         </div>
       
-        <ul className={styles.ul}>{attemptsElement}</ul>
+        <div className={styles.ulWrapper}>
+          <ul className={styles.ul}>{attemptsElement}</ul>
+        </div>
+
         <button>Edit</button>
       </section>
     );
