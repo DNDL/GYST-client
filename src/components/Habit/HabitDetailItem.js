@@ -22,6 +22,16 @@ export default function HabitDetailItem({ habit, attempts, handleDelete }) {
   
   return (
     <section>
+      <Link to={{
+        pathname: '/habitForm',
+        state: { habit }
+      }}>
+        <button>Edit Habit</button>
+      </Link>
+
+      <Link to='/'>
+        <button onClick={() => handleDelete(habit._id)}>Delete Habit</button>
+      </Link>
       <div className={styles.habitInfo}>
         <div className={styles.habitTitle}>
           <h3 style={{ color: habit.color }}>{habit.title}</h3>
@@ -36,16 +46,6 @@ export default function HabitDetailItem({ habit, attempts, handleDelete }) {
         <ul className={styles.ul}>{attemptsElement}</ul>
       </div>
 
-      <Link to={{
-        pathname: '/habitForm',
-        state: { habit }
-      }}>
-        <button>Edit Habit</button>
-      </Link>
-
-      <Link to='/'>
-        <button onClick={() => handleDelete(habit._id)}>Delete Habit</button>
-      </Link>
 
     </section>
   );
