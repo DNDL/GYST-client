@@ -22,34 +22,33 @@ function HabitForm({ history, handleSubmit }) {
       sa: false
     }
   });
-  
-  
+
+
   const handleChange = ({ target }) => {
     const prop = target.name === 'days' ? { days: { ...form.days, [target.value] : target.checked } } : { [target.name] : target.value };
     updateForm({ ...form, ...prop });
   };
-  
+
   const frequencyLabels = ['daily', 'weekly', 'monthly'];
   const frequencyFieldset = 'frequency';
-  
+
   const colorLabels = ['red', 'green', 'blue'];
   const colorFieldset = 'color';
-  
+
   const createRadioButtons = (arr, fieldset) => {
     return arr.map(a => (
       <label key={a}>
         {a}
-        <input 
-          onChange={() => updateForm({ ...form, [fieldset] : `${a}` })} 
-          type="radio" 
-          name={fieldset} 
+        <input
+          onChange={() => updateForm({ ...form, [fieldset] : `${a}` })}
+          type="radio"
+          name={fieldset}
         />
       </label>
     ));
   };
 
 
-  console.log('form', form);
   return (
     <form onSubmit={event => {
       event.preventDefault();
@@ -92,10 +91,10 @@ function HabitForm({ history, handleSubmit }) {
         {Object.keys(form.days).map(day => (
           <label key={day}>
             {day}
-            <input  
+            <input
               onChange={handleChange}
-              type="checkbox" 
-              name="days" 
+              type="checkbox"
+              name="days"
               value={day}
             />
           </label>
