@@ -1,4 +1,4 @@
-import { postHabit, getHabits, getAttempts, postAttempt } from '../services/habitApi';
+import { postHabit, patchHabit, getHabits, getAttempts, postAttempt, removeHabit } from '../services/habitApi';
 
 export const ADD_HABIT = 'ADD_HABIT';
 export const addHabit = habit => ({
@@ -6,10 +6,22 @@ export const addHabit = habit => ({
   payload: postHabit(habit)
 });
 
+export const UPDATE_HABIT = 'UPDATE_HABIT';
+export const updateHabit = habit => ({
+  type: UPDATE_HABIT, 
+  payload: patchHabit(habit)
+});
+
 export const FETCH_HABITS = 'FETCH_HABITS';
 export const fetchHabits = () => ({
   type: FETCH_HABITS,
   payload: getHabits()
+});
+
+export const DELETE_HABIT = 'DELETE_HABIT';
+export const deleteHabit = (id) => ({
+  type: DELETE_HABIT,
+  payload: removeHabit(id)
 });
 
 export const ADD_ATTEMPT = 'ADD_ATTEMPT';
