@@ -2,22 +2,26 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import HabitForm from '../HabitForm/HabitForm';
-import { addHabit } from '../../actions/habitActions';
+import { addHabit, updateHabit } from '../../actions/habitActions';
 
 class AddHabit extends Component {
   static propTypes = {
-    handleSubmit: PropTypes.func.isRequired
+    handleSubmit: PropTypes.func.isRequired,
+    handleUpdate: PropTypes.func.isRequired
   }
 
   render() {
-    return <HabitForm handleSubmit={this.props.handleSubmit}/>;
+    const { handleSubmit, handleUpdate } = this.props;
+    return <HabitForm actions={{ handleSubmit, handleUpdate }}/>;
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  handleSubmit(event, habit) {
+  handleSubmit(habit) {
     return dispatch(addHabit(habit));
-    // dispatch(addAttempt(habit));
+  },
+  handleUpdate(habit) {
+    return dispatch(updateHabit(habit));
   }
 });
 
