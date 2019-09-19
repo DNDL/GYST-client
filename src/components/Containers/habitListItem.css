@@ -4,7 +4,6 @@ and (max-width: 600px) {
 
   .habitListItem {
     width: 90%;
-    border: 1px solid gold;
     margin: 0 auto;
   }
 
@@ -14,8 +13,9 @@ and (max-width: 600px) {
     align-items: center;
   }
   .habit {
-    width: 100%;
+    width: 80%;
     display: flex;
+    margin: 0 auto;
   }
 
   .comment {
@@ -25,6 +25,10 @@ and (max-width: 600px) {
     width: 70%;
     height: 4vh;
   }
+
+  ::-webkit-input-placeholder {
+    text-align: center;
+ }
 
   .progress { 
     width: 50%;
