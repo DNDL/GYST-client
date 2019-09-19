@@ -9,7 +9,7 @@ function timeConverter(timestamp) {
     .format('dddd, MMMM Do YYYY, h:mm a');
 }
 
-export default function HabitDetailItem({ habit, attempts }) {
+export default function HabitDetailItem({ habit, attempts, handleDelete }) {
 
   if(!habit) return null;
 
@@ -42,6 +42,11 @@ export default function HabitDetailItem({ habit, attempts }) {
       }}>
         <button>Edit Habit</button>
       </Link>
+
+      <Link to='/'>
+        <button onClick={() => handleDelete(habit._id)}>Delete Habit</button>
+      </Link>
+
     </section>
   );
 }

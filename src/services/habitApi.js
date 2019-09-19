@@ -35,6 +35,20 @@ export const patchHabit = (habit) => {
     });
 };
 
+export const removeHabit = (id) => {
+  return fetch(`${process.env.API_URL}/api/v1/habits/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+  })
+    .then(res => {
+      if(!res.ok) throw `Unable to delete habit ${id}.`;
+      return res.json();
+    });
+};
+
 export const postAttempt = (habitId, comment)  => {
   return fetch(`${process.env.API_URL}/api/v1/habits/attempts`, {
     method: 'POST',
