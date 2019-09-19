@@ -1,0 +1,26 @@
+.HabitForm {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin: 3px;
+  }
+
+  fieldset {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-bottom: 0px;
+  }
+  
+  .checkbox {
+    display: flex;
+    justify-content: space-evenly; 
+    margin: 0;
+  }
+
+  .radio {
+    display: flex;
+    justify-content: space-evenly; 
+  }
+
+}
