@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HabitDetailItem component renders HabitDetailItem 1`] = `
+<section>
+  <Link
+    to={
+      Object {
+        "pathname": "/habitForm",
+        "state": Object {
+          "habit": Object {},
+        },
+      }
+    }
+  >
+    <button>
+      Edit Habit
+    </button>
+  </Link>
+  <Link
+    to="/"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Delete Habit
+    </button>
+  </Link>
+  <div
+    className="habitInfo"
+  >
+    <div
+      className="habitTitle"
+    >
+      <h3
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+      />
+    </div>
+    <div
+      className="why"
+    >
+      <p>
+        Your why: 
+      </p>
+      <p />
+    </div>
+  </div>
+  <div
+    className="ulWrapper"
+  >
+    <ul
+      className="ul"
+    />
+  </div>
+</section>
+`;

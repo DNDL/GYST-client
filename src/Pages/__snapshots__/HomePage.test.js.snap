@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePage component renders HomePage 1`] = `
+<Fragment>
+  <Logo />
+  <UserDisplay />
+  <Connect(AllHabits) />
+  <Nav />
+</Fragment>
+`;

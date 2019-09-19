@@ -39,6 +39,7 @@ export default function HabitDetailItem({ habit, attempts, handleDelete }) {
         <div className={styles.why}>
           <p>Your why: </p>
           <p>{habit.why}</p>
+          
         </div>
       </div>
   
@@ -53,5 +54,6 @@ export default function HabitDetailItem({ habit, attempts, handleDelete }) {
 
 HabitDetailItem.propTypes = {
   habit: PropTypes.object,
-  attempts: PropTypes.array
+  attempts: PropTypes.array,
+  handleDelete: PropTypes.func
 };

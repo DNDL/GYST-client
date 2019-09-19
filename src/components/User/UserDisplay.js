@@ -16,9 +16,7 @@ export default function UserDisplay() {
         <div className={styles.logout}>
           {isAuthenticated && <button className={styles.logoutButton} onClick={logout}>Logout</button>}
         </div>
-
       </div>
-    
     </section>
   );
 }
