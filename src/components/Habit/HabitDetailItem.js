@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from '../Containers/habit.css';
+import styles from '../Containers/habitDetailItem.css';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 function timeConverter(timestamp) {
   return moment(timestamp)
@@ -22,16 +23,28 @@ export default function HabitDetailItem({ habit, attempts, handleDelete }) {
   
   return (
     <section>
+
       <Link to={{
         pathname: '/habitForm',
         state: { habit }
       }}>
-        <button>Edit Habit</button>
+        <Button
+          type="submit"
+          variant="contained"
+          size="small" color="primary">
+        Edit Habit
+        </Button>
+      </Link>
+​
+      <Link to='/'>
+        <Button
+          type="submit"
+          variant="contained"
+          size="small" color="primary" 
+          onClick={() => handleDelete(habit._id)}>
+        Delete Habit</Button>
       </Link>
 
-      <Link to='/'>
-        <button onClick={() => handleDelete(habit._id)}>Delete Habit</button>
-      </Link>
       <div className={styles.habitInfo}>
         <div className={styles.habitTitle}>
           <h3 style={{ color: habit.color }}>{habit.title}</h3>
