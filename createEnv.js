@@ -1,4 +1,5 @@
 const fs = require('fs');
+console.log('in createEnv');
 fs.writeFileSync('./.env', `API_URL=${process.env.API_URL}\n
 AUTH0_CLIENT_ID=${process.env.AUTH0_CLIENT_ID}\n
 AUTH0_CALLBACK=${process.env.AUTH0_CALLBACK}\n
