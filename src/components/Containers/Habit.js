@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getHabitById, getAttemptsByHabitId } from '../../selectors/habitSelectors';
 import moment from 'moment';
+import { deleteAHabit, editAHabit } from '../../actions/habitActions';
 
 function timeConverter(timestamp) {
   return moment(timestamp)
@@ -12,14 +13,17 @@ function timeConverter(timestamp) {
 class Habit extends Component {
   static propTypes = {
     habit: PropTypes.shape({
+      _id: PropTypes.string,
       title: PropTypes.string,
       why: PropTypes.string
     }).isRequired,
-    attempts: PropTypes.array
+    attempts: PropTypes.array,
+    handleDelete: PropTypes.func.isRequired,
+    handleEdit: PropTypes.func.isRequired
   }
 
   render() {
-    const { habit, attempts } = this.props;
+    const { habit, attempts, handleDelete, handleEdit } = this.props;
 
     const attemptsElement = attempts.map(attempt => (
       <li key={attempt.createdAt}>
@@ -27,13 +31,13 @@ class Habit extends Component {
         {attempt.comment}
       </li>
     ));
-
     return (
       <section>
         <h3>{habit.title}</h3>
         <p>{habit.why}</p>
         <ul>{attemptsElement}</ul>
-        <button>Edit</button>
+        <button onClick={() => handleEdit(habit._id)}>Edit</button>
+        <button onClick={() => handleDelete(habit._id)}>Delete</button>
       </section>
     );
   }
@@ -44,6 +48,16 @@ const mapStateToProps = (state, props) => ({
   attempts: getAttemptsByHabitId(state, props.props.match.params._id)
 });
 
+const mapDispatchToProps = dispatch => ({
+  handleDelete(id) {
+    dispatch(deleteAHabit(id));
+  },
+  handleEdit(id) {
+    dispatch(editAHabit(id));
+  }
+});
+
 export default connect(
-  mapStateToProps
+  mapStateToProps, 
+  mapDispatchToProps
 )(Habit);

@@ -45,6 +45,35 @@ export const getHabits = () => {
       return res.json();
     });
 };
+
+export const editHabit = (id) => {
+  return fetch(`${process.env.API_URL}/api/v1/habits/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+  })
+    .then(res => {
+      if(!res.ok) throw 'Unable to edit your habit';
+      return res.json();
+    });
+};
+
+export const deleteHabit = (id) => {
+  return fetch(`${process.env.API_URL}/api/v1/habits/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+  })
+    .then(res => {
+      if(!res.ok) throw 'Unable to get your habits';
+      return res.json();
+    });
+};
+
 export const getAttempts = () => {
   return fetch(`${process.env.API_URL}/api/v1/habits/attempts`, {
     headers: {

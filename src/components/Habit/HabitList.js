@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styles from './habitList.css';
 import HabitListItem from '../Containers/HabitListItem';
 
-// TODO: increment button
 // TODO: display most recent attemps for progress visualization
 
 function HabitList({ habits }) {
