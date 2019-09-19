@@ -4,6 +4,12 @@ import { withRouter } from 'react-router-dom';
 import Slider from '@material-ui/core/Slider';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import styles from './habitForm.css';
 
 function HabitForm(props) {
   const { history } = props;
@@ -23,7 +29,8 @@ function HabitForm(props) {
       th: false,
       f: false,
       sa: false
-    }
+    },
+    checked: false
   });
 
   useEffect(() => {
@@ -41,42 +48,47 @@ function HabitForm(props) {
 
   const frequencyLabels = ['daily', 'weekly', 'monthly'];
   const frequencyFieldset = 'frequency';
-  const colorLabels = ['red', 'green', 'blue'];
+
+  const colorLabels = ['red', 'yellow', 'green', 'blue', 'purple'];
   const colorFieldset = 'color';
 
-  const createRadioButtons = (arr, fieldset) => {
+  const createMatrialRadioButtons = (arr, fieldset) => {
     return arr.map(a => (
       <label key={a}>
         {a}
-        <input
-          onChange={() => updateHabit({ ...habit, [fieldset] : `${a}` })}
-          type="radio"
-          name={fieldset}
-        />
+        <RadioGroup aria-label={fieldset} name={fieldset}></RadioGroup>
+        <FormControlLabel 
+          onChange={() => updateHabit({ ...habit, [fieldset]: `${a}` })}
+          value={a}
+          control={<Radio />} 
+          labelPlacement="top" />
+        <RadioGroup/>
       </label>
     ));
   };
 
   return (
-    <form>
+    <form className={styles.HabitForm}>
       <TextField
-        id="outlined-controlled"
+        id="outlined-dense"
         label="Habit"
-        onChange={(e) => {
+        onChange={e => {
           updateHabit({ ...habit, title: e.target.value });
         }}
         value={habit.title}
-        margin="normal"
+        margin="dense"
         variant="outlined"
       />
 
       <fieldset>
-        <legend>Frequency:</legend>
-        {createRadioButtons(frequencyLabels, frequencyFieldset)}
+        <legend>Frequency</legend>
+        <RadioGroup className={styles.radio} aria-label="frequency" name="frequency" row>
+          {createMatrialRadioButtons(frequencyLabels, frequencyFieldset)}
+        </RadioGroup>
       </fieldset>
 
       <fieldset>
-        <legend>Times per:</legend>
+        <legend>Times per {habit.frequency}</legend>  
         <Slider
           defaultValue={habit.goal}
           step={1}
@@ -88,35 +100,43 @@ function HabitForm(props) {
         />
       </fieldset>
 
-      <fieldset>
-        <legend>Hold me accountable on:</legend>
-        {Object.keys(habit.days).map(day => (
-          <label key={day}>
-            {day}
-            <input
+
+      <fieldset className={styles.checkboxes}>
+        <legend>Hold me accountable on</legend>
+        <FormGroup aria-label="position" name="days"  row>
+          {Object.keys(habit.days).map(day => (
+            <FormControlLabel
               onChange={handleChange}
-              type="checkbox"
-              name="days"
-              value={day}
+              className={styles.checkbox}
+              key={day}
+              value="top"
+              control={<Checkbox color="primary" className={styles.checkbox}/>}
+              label={day}
+              labelPlacement="top"
             />
-          </label>
-        ))}
+          ))}
+        </FormGroup>
       </fieldset>
+
 
       <fieldset>
-        <legend>Color: </legend>
-        {createRadioButtons(colorLabels, colorFieldset)}
+        <legend>Label color</legend>
+        {/* <FormLabel component="legend">{colorFieldset}</FormLabel> */}
+        <RadioGroup className={styles.radio} aria-label="gender" name="color" row>
+          {createMatrialRadioButtons(colorLabels, colorFieldset)}
+        </RadioGroup>
       </fieldset>
 
-      <section>
-        <textarea
-          name="why"
-          value={habit.why}
-          onChange={handleChange}
-          maxLength="128"
-          placeholder="Declare your Why..."
-        ></textarea>
-      </section>
+      <TextField
+        id="outlined-dense"
+        label="Declare your Why..."
+        onChange={e => {
+          updateHabit({ ...habit, why: e.target.value });
+        }}
+        value={habit.why}
+        margin="dense"
+        variant="outlined"
+      />
       
       {/* //Conditionally rendered buttons */}
       { editing &&
