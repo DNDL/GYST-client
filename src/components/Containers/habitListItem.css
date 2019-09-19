@@ -1,0 +1,46 @@
+@media only screen 
+and (min-width: 360px) 
+and (max-width: 600px) {
+
+  .habitListItem {
+    width: 90%;
+    margin: 30px auto;
+  }
+
+  .form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+  }
+  .habit {
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+  }
+
+  .comment {
+    border: .5px solid black;
+    border-radius: 15px;
+    box-shadow: 0 0 5px black;
+    width: 70%;
+    height: 4vh;
+  }
+
+  ::-webkit-input-placeholder {
+    text-align: center;
+ }
+
+  .progress { 
+    width: 50%;
+  }
+
+  .progressLine {
+    top: 50%;
+  }
+
+  .link {
+    width: 50%;
+  }
+
+}

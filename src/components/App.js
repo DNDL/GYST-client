@@ -1,6 +1,30 @@
-import React from 'react';
+import React from 'react'; 
+import PropTypes from 'prop-types';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import HomePage from '../Pages/HomePage';
+import { withSession } from '../Auth0Provider';
+import FormPage from '../Pages/FormPage';
+import HabitDetailPage from '../Pages/HabitDetailPage';
+import AboutUs from '../AboutUs/AboutUs';
 
-export default function App() {
-  return <h1>Hello World</h1>;
+function App({ loading }) {
+  if(loading) return null;
+
+  return ( 
+    <>
+      <Router>
+        <Route path="/aboutus" component={AboutUs} />
+        <Route path="/habitDetail/:_id" component={HabitDetailPage}/>
+        <Route path="/habitForm" component={FormPage} />
+        <Route  path="/users/:id" component={HomePage} />
+        <Route exact path="/" component={HomePage} />
+      </Router>
+    </>
+  );
 }
-  
+
+App.propTypes = {
+  loading: PropTypes.bool
+};
+
+export default withSession(App);
