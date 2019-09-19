@@ -6,18 +6,20 @@ and (max-width: 600px) {
     .header {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 10px;
+      height: 15vh;
     }
 
+    .logout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
     .user {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 25vw;
-    }
-
-    .logout {
-      display: flex;
     }
 
     .img {
@@ -37,7 +39,6 @@ and (max-width: 600px) {
       border-radius: 20rem;
       border-width: .1rem;
       border-color: rgb(226, 226, 226);
-      top: -50%;
   }
 
   }

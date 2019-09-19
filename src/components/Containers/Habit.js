@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getHabitById, getAttemptsByHabitId } from '../../selectors/habitSelectors';
 import moment from 'moment';
+import styles from './habit.css';
 
 function timeConverter(timestamp) {
   return moment(timestamp)
@@ -13,7 +14,8 @@ class Habit extends Component {
   static propTypes = {
     habit: PropTypes.shape({
       title: PropTypes.string,
-      why: PropTypes.string
+      why: PropTypes.string,
+      color: PropTypes.string.isRequired
     }).isRequired,
     attempts: PropTypes.array
   }
@@ -30,9 +32,17 @@ class Habit extends Component {
 
     return (
       <section>
-        <h3>{habit.title}</h3>
-        <p>{habit.why}</p>
-        <ul>{attemptsElement}</ul>
+        <div className={styles.habitInfo}>
+          <div className={styles.habitTitle}>
+            <h3 style={{ color: habit.color }}>{habit.title}</h3>
+          </div>
+          <div className={styles.why}>
+            <p>Your why: </p>
+            <p>{habit.why}</p>
+          </div>
+        </div>
+      
+        <ul className={styles.ul}>{attemptsElement}</ul>
         <button>Edit</button>
       </section>
     );
