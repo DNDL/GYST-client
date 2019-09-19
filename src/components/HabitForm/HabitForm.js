@@ -6,8 +6,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 function HabitForm(props) {
-
-  const { history, handleSubmit, handleUpdate } = props;
+  const { history } = props;
+  const { handleSubmit, handleUpdate } = props.actions;
   const [editing, setEditing] = useState(false);
   const [habit, updateHabit] = useState({
     title: '',
@@ -56,8 +56,6 @@ function HabitForm(props) {
       </label>
     ));
   };
-
-  console.log(habit.goal);
 
   return (
     <form>
@@ -150,9 +148,12 @@ function HabitForm(props) {
 }
 
 HabitForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
-  location: PropTypes.object
+  location: PropTypes.object,
+  actions: PropTypes.shape({
+    handleSubmit: PropTypes.func,
+    handleUpdate: PropTypes.func,
+  })
 };
 
 export default withRouter(HabitForm);

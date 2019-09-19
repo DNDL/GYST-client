@@ -4,6 +4,7 @@ export const setToken = newToken => {
 };
 
 export const postHabit = (habit) => {
+  console.log('in postHabit', habit);
   return fetch(`${process.env.API_URL}/api/v1/habits`, {
     method: 'POST',
     headers: {
@@ -14,6 +15,22 @@ export const postHabit = (habit) => {
   })
     .then(res => {
       if(!res.ok) throw 'unable to post';
+      return res.json();
+    });
+};
+
+export const patchHabit = (habit) => {
+  console.log('habit in patchHabit', habit);
+  return fetch(`${process.env.API_URL}/api/v1/habits/${habit._id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ habit })
+  })
+    .then(res => {
+      if(!res.ok) throw `Unable to update habit ${habit._id}.`;
       return res.json();
     });
 };
