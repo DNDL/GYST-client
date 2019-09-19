@@ -6,6 +6,7 @@ import { getValidAttemptsByHabit } from '../../selectors/habitSelectors';
 import { addAttempt } from '../../actions/habitActions';
 import Button from '@material-ui/core/Button';
 import styles from './habitListItem.css';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 class HabitListItem extends Component {
   state = {
@@ -25,6 +26,7 @@ class HabitListItem extends Component {
   render() {
     const { attempts, habit, handleSubmit } = this.props;
     const { comment } = this.state;
+    const progress = (attempts.length / habit.goal) * 100;
     return (
       <>
         <Link to={`/habitDetail/${habit._id}`}>
@@ -36,6 +38,7 @@ class HabitListItem extends Component {
         </div>
         <form onSubmit={ (e) => handleSubmit(e, habit._id, comment) }>
           <input name="comment" onChange={(e) => this.handleChange(e)} placeholder="comment..."></input>
+          <LinearProgress variant="determinate" value={progress} />
           <Button type="submit" className={styles.button} variant="contained" size="small" color="primary">+</Button>
         </form>
       </>
