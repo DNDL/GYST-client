@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import Slider from '@material-ui/core/Slider';
@@ -11,15 +11,17 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import styles from './habitForm.css';
 
-function HabitForm({ history, handleSubmit }) {
-  const [form, updateForm] = useState({
+function HabitForm(props) {
+  const { history } = props;
+  const { handleSubmit, handleUpdate } = props.actions;
+  const [editing, setEditing] = useState(false);
+  const [habit, updateHabit] = useState({
     title: '',
     frequency: '',
-    goal: 10, 
+    goal: 1,
     why: '',
     color: '',
     days: {
-      // TODO figure out what the data looks like. I want to display capitol letters
       s: false,
       m: false,
       t: false,
@@ -31,12 +33,17 @@ function HabitForm({ history, handleSubmit }) {
     checked: false
   });
 
+  useEffect(() => {
+    if(props.location.state) {
+      const existingHabit = props.location.state.habit;
+      updateHabit({ ...existingHabit, days: { ...existingHabit.days } });
+      setEditing(true);
+    }
+  }, []);
+
   const handleChange = ({ target }) => {
-    const prop =
-      target.name === 'days'
-        ? { days: { ...form.days, [target.value]: target.checked } }
-        : { [target.name]: target.value };
-    updateForm({ ...form, ...prop });
+    const prop = target.name === 'days' ? { days: { ...habit.days, [target.value] : target.checked } } : { [target.name] : target.value };
+    updateHabit({ ...habit, ...prop });
   };
 
   const frequencyLabels = ['daily', 'weekly', 'monthly'];
@@ -51,7 +58,7 @@ function HabitForm({ history, handleSubmit }) {
         {a}
         <RadioGroup aria-label={fieldset} name={fieldset}></RadioGroup>
         <FormControlLabel 
-          onChange={() => updateForm({ ...form, [fieldset]: `${a}` })}
+          onChange={() => updateHabit({ ...habit, [fieldset]: `${a}` })}
           value={a}
           control={<Radio />} 
           labelPlacement="top" />
@@ -61,20 +68,14 @@ function HabitForm({ history, handleSubmit }) {
   };
 
   return (
-    <form className={styles.HabitForm}
-      onSubmit={event => {
-        event.preventDefault();
-        handleSubmit(event, form);
-        history.push('/');
-      }}
-    >
+    <form className={styles.HabitForm}>
       <TextField
         id="outlined-dense"
         label="Habit"
         onChange={e => {
-          updateForm({ ...form, title: e.target.value });
+          updateHabit({ ...habit, title: e.target.value });
         }}
-        value={form.title}
+        value={habit.title}
         margin="dense"
         variant="outlined"
       />
@@ -87,14 +88,14 @@ function HabitForm({ history, handleSubmit }) {
       </fieldset>
 
       <fieldset>
-        <legend>Times per {form.frequency}</legend>  
+        <legend>Times per {habit.frequency}</legend>  
         <Slider
-          defaultValue={1}
+          defaultValue={habit.goal}
           step={1}
           marks
           min={1}
           max={10}
-          onChange={(e, val) => updateForm({ ...form, goal: val })}
+          onChange={(e, val) => updateHabit({ ...habit, goal: val })}
           valueLabelDisplay="auto"
         />
       </fieldset>
@@ -103,7 +104,7 @@ function HabitForm({ history, handleSubmit }) {
       <fieldset className={styles.checkboxes}>
         <legend>Hold me accountable on</legend>
         <FormGroup aria-label="position" name="days"  row>
-          {Object.keys(form.days).map(day => (
+          {Object.keys(habit.days).map(day => (
             <FormControlLabel
               onChange={handleChange}
               className={styles.checkbox}
@@ -112,7 +113,7 @@ function HabitForm({ history, handleSubmit }) {
               control={<Checkbox color="primary" className={styles.checkbox}/>}
               label={day}
               labelPlacement="top"
-              />
+            />
           ))}
         </FormGroup>
       </fieldset>
@@ -130,67 +131,49 @@ function HabitForm({ history, handleSubmit }) {
         id="outlined-dense"
         label="Declare your Why..."
         onChange={e => {
-          updateForm({ ...form, why: e.target.value });
+          updateHabit({ ...habit, why: e.target.value });
         }}
-        value={form.why}
+        value={habit.why}
         margin="dense"
         variant="outlined"
-        />
-
-      <Button type="submit" variant="contained" size="small" color="primary">
-        submit
-      </Button>
-
+      />
+      
+      {/* //Conditionally rendered buttons */}
+      { editing &&
+        <Button
+          type="submit"
+          variant="contained"
+          size="small" color="primary"
+          onClick={() => {
+            handleUpdate(habit);
+            history.push('/');
+          }}>
+          Update Habit
+        </Button>
+      }
+      { !editing &&
+        <Button
+          type="submit"
+          variant="contained"
+          size="small" color="primary"
+          onClick={() => {
+            handleSubmit(habit);
+            history.push('/');
+          }}>
+          Create Habit
+        </Button>
+      }
     </form>
   );
 }
 
 HabitForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object,
+  actions: PropTypes.shape({
+    handleSubmit: PropTypes.func,
+    handleUpdate: PropTypes.func,
+  })
 };
 
 export default withRouter(HabitForm);
-
-{/* <fieldset>
-  <legend>Hold me accountable on:</legend>
-  {Object.keys(form.days).map(day => (
-    <label key={day}>
-    {day}
-    <input
-    onChange={handleChange}
-    type="checkbox"
-    name="days"
-    value={day}
-    />
-    </label>
-    ))}
-  </fieldset> */}
-    
-{/* <fieldset>
-  <legend>Hold me accountable on:</legend>
-  {Object.keys(form.days).map(day => (
-    <label key={day} >
-    {day}
-    <Checkbox
-    name="days"
-    checked={form.day}
-    onChange={(e, val) => updateForm({ ...form, day: val })}
-    value={day}
-    inputProps={{
-      'aria-label': 'primary checkbox'
-    }}
-    />
-    </label>
-    ))}
-  </fieldset> */}
-  
-  {/* <fieldset>
-    <legend>Frequency:</legend>
-    {createRadioButtons(frequencyLabels, frequencyFieldset)}
-  </fieldset> */}
-
-{/* <fieldset>
-  <legend>Color: </legend>
-  {createRadioButtons(colorLabels, colorFieldset)}
-</fieldset> */}
