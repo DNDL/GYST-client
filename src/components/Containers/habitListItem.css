@@ -4,13 +4,14 @@ and (max-width: 600px) {
 
   .habitListItem {
     width: 90%;
-    margin: 0 auto;
+    margin: 30px auto;
   }
 
   .form {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 10px auto;
   }
   .habit {
     width: 80%;
@@ -32,7 +33,6 @@ and (max-width: 600px) {
 
   .progress { 
     width: 50%;
-   
   }
 
   .progressLine {
