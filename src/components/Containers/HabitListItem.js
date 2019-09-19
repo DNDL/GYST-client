@@ -27,21 +27,24 @@ class HabitListItem extends Component {
     const { attempts, habit, handleSubmit } = this.props;
     const { comment } = this.state;
     const progress = (attempts.length / habit.goal) * 100;
+
     return (
-      <>
-        <Link to={`/habitDetail/${habit._id}`}>
-          <p style={{ color: habit.color }}>{habit.title}</p>
-        </Link>
-        <div className={styles.progress}>
-          <p>{habit.frequency}</p>
-          <p>{attempts.length}</p>
+      <section className={styles.habitListItem}>
+        <div className={styles.habit}>
+          <div className={styles.link}>
+            <Link to={`/habitDetail/${habit._id}`}>
+              <p style={{ color: habit.color }}>{habit.title}</p>
+            </Link>
+          </div>
+          <div className={styles.progress}>
+            <LinearProgress className={styles.progressLine}variant="determinate" value={progress} />
+          </div>
         </div>
-        <form onSubmit={ (e) => handleSubmit(e, habit._id, comment) }>
-          <input name="comment" onChange={(e) => this.handleChange(e)} placeholder="comment..."></input>
-          <LinearProgress variant="determinate" value={progress} />
+        <form className={styles.form} onSubmit={ (e) => handleSubmit(e, habit._id, comment) }>
+          <input className={styles.comment}name="comment" onChange={(e) => this.handleChange(e)} placeholder="comment..."></input>
           <Button type="submit" className={styles.button} variant="contained" size="small" color="primary">+</Button>
         </form>
-      </>
+      </section>
     );
   }
 }

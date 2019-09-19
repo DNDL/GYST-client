@@ -2,48 +2,41 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getHabitById, getAttemptsByHabitId } from '../../selectors/habitSelectors';
-import moment from 'moment';
-
-function timeConverter(timestamp) {
-  return moment(timestamp)
-    .format('dddd, MMMM Do YYYY, h:mm a');
-}
+import { fetchHabits, fetchAttempts } from '../../actions/habitActions';
+import HabitDetailItem from '../Habit/HabitDetailItem';
 
 class Habit extends Component {
   static propTypes = {
-    habit: PropTypes.shape({
-      title: PropTypes.string,
-      why: PropTypes.string
-    }).isRequired,
-    attempts: PropTypes.array
+    habit: PropTypes.object,
+    attempts: PropTypes.array,
+    fetch: PropTypes.func
+  }
+
+  componentDidMount() {
+    this.props.fetch();
   }
 
   render() {
     const { habit, attempts } = this.props;
-
-    const attemptsElement = attempts.map(attempt => (
-      <li key={attempt.createdAt}>
-        {timeConverter(attempt.createdAt)}
-        {attempt.comment}
-      </li>
-    ));
-
     return (
-      <section>
-        <h3>{habit.title}</h3>
-        <p>{habit.why}</p>
-        <ul>{attemptsElement}</ul>
-        <button>Edit</button>
-      </section>
+      <HabitDetailItem habit={habit} attempts={attempts}/>
     );
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  habit: getHabitById(state, props.props.match.params._id),
-  attempts: getAttemptsByHabitId(state, props.props.match.params._id)
+const mapStateToProps = (state, props) => {
+  return { habit: getHabitById(state, props.props.match.params._id),
+    attempts: getAttemptsByHabitId(state, props.props.match.params._id) };
+};
+
+const mapDispatchToProps = dispatch => ({
+  fetch() {
+    dispatch(fetchHabits());
+    dispatch(fetchAttempts());
+  }
 });
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Habit);

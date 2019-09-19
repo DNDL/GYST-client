@@ -1,19 +1,12 @@
 @media only screen 
 and (min-width: 360px) 
 and (max-width: 600px) {
-  .li {
-    display: flex;
-    justify-content: space-between;
-    list-style-type: none;
-    width: 90vw;
-    margin: 2px auto;
-  }
 
   .ul {
     margin: 0;
     padding: 0;
     overflow: auto;
-    height: 65vh;
+    height: 64vh;
     border: 1px solid white;
     border-radius: 15px;
     box-shadow: 0 0 5px;
