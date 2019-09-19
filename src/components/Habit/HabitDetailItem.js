@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../Containers/habit.css';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 function timeConverter(timestamp) {
   return moment(timestamp)
@@ -35,7 +36,12 @@ export default function HabitDetailItem({ habit, attempts }) {
         <ul className={styles.ul}>{attemptsElement}</ul>
       </div>
 
-      <button>Edit</button>
+      <Link to={{
+        pathname: '/habitForm',
+        state: { habit }
+      }}>
+        <button>Edit Habit</button>
+      </Link>
     </section>
   );
 }

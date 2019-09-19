@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import Slider from '@material-ui/core/Slider';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
-function HabitForm({ history, handleSubmit }) {
-  const [form, updateForm] = useState({
+function HabitForm(props) {
+
+  const { history, handleSubmit, handleUpdate } = props;
+  const [editing, setEditing] = useState(false);
+  const [habit, updateHabit] = useState({
     title: '',
     frequency: '',
-    goal: 10,
+    goal: 1,
     why: '',
     color: '',
-    days: {      // TODO figure out what the data looks like. I want to display capitol letters
+    days: {
       s: false,
       m: false,
       t: false,
@@ -23,15 +26,21 @@ function HabitForm({ history, handleSubmit }) {
     }
   });
 
+  useEffect(() => {
+    if(props.location.state) {
+      const existingHabit = props.location.state.habit;
+      updateHabit({ ...existingHabit, days: { ...existingHabit.days } });
+      setEditing(true);
+    }
+  }, []);
 
   const handleChange = ({ target }) => {
-    const prop = target.name === 'days' ? { days: { ...form.days, [target.value] : target.checked } } : { [target.name] : target.value };
-    updateForm({ ...form, ...prop });
+    const prop = target.name === 'days' ? { days: { ...habit.days, [target.value] : target.checked } } : { [target.name] : target.value };
+    updateHabit({ ...habit, ...prop });
   };
 
   const frequencyLabels = ['daily', 'weekly', 'monthly'];
   const frequencyFieldset = 'frequency';
-
   const colorLabels = ['red', 'green', 'blue'];
   const colorFieldset = 'color';
 
@@ -40,7 +49,7 @@ function HabitForm({ history, handleSubmit }) {
       <label key={a}>
         {a}
         <input
-          onChange={() => updateForm({ ...form, [fieldset] : `${a}` })}
+          onChange={() => updateHabit({ ...habit, [fieldset] : `${a}` })}
           type="radio"
           name={fieldset}
         />
@@ -48,24 +57,19 @@ function HabitForm({ history, handleSubmit }) {
     ));
   };
 
+  console.log(habit.goal);
 
   return (
-    <form onSubmit={event => {
-      event.preventDefault();
-      handleSubmit(event, form);
-      history.push('/');
-    }}>
-
+    <form>
       <TextField
         id="outlined-controlled"
         label="Habit"
         onChange={(e) => {
-          updateForm({ ...form, title: e.target.value });
+          updateHabit({ ...habit, title: e.target.value });
         }}
-        value={form.title}
+        value={habit.title}
         margin="normal"
         variant="outlined"
-        defaultValue=""
       />
 
       <fieldset>
@@ -76,19 +80,19 @@ function HabitForm({ history, handleSubmit }) {
       <fieldset>
         <legend>Times per:</legend>
         <Slider
-          defaultValue={1}
+          defaultValue={habit.goal}
           step={1}
           marks
           min={1}
           max={10}
-          onChange={(e, val) => updateForm({ ...form, goal: val })}
+          onChange={(e, val) => updateHabit({ ...habit, goal: val })}
           valueLabelDisplay="auto"
         />
       </fieldset>
 
       <fieldset>
         <legend>Hold me accountable on:</legend>
-        {Object.keys(form.days).map(day => (
+        {Object.keys(habit.days).map(day => (
           <label key={day}>
             {day}
             <input
@@ -109,20 +113,46 @@ function HabitForm({ history, handleSubmit }) {
       <section>
         <textarea
           name="why"
-          value={form.why}
+          value={habit.why}
           onChange={handleChange}
           maxLength="128"
           placeholder="Declare your Why..."
         ></textarea>
       </section>
-      <Button type="submit" variant="contained" size="small" color="primary">submit</Button>
+      
+      {/* //Conditionally rendered buttons */}
+      { editing &&
+        <Button
+          type="submit"
+          variant="contained"
+          size="small" color="primary"
+          onClick={() => {
+            handleUpdate(habit);
+            history.push('/');
+          }}>
+          Update Habit
+        </Button>
+      }
+      { !editing &&
+        <Button
+          type="submit"
+          variant="contained"
+          size="small" color="primary"
+          onClick={() => {
+            handleSubmit(habit);
+            history.push('/');
+          }}>
+          Create Habit
+        </Button>
+      }
     </form>
   );
 }
 
 HabitForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object
 };
 
 export default withRouter(HabitForm);
