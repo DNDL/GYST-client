@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Averia+Serif+Libre%7CJulius+Sans+One&display=swap');
 
 .HabitForm {
+  overflow: auto;
   display: flex;
   flex-direction: column;
   font-family: 'Julius Sans One', sans-serif;

@@ -11,14 +11,21 @@ and (max-width: 600px) {
     position: fixed;
     bottom: 0;
     width: 95vw;
+    height: 9vh;
     margin: 5px auto;
     background-color: white;
   }
+
+    a {
+      svg {
+        color: black;
+        font-size: 3em;
+      }
+    }
   
   img {
     border: 2px solid rgb(122, 121, 121);
     border-radius: 15px;
     margin-top: 1vw;
-    box-shadow: 0 0 5px black;
   }
 }
