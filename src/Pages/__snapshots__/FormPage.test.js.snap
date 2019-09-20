@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormPage component renders FormPage 1`] = `
+<Fragment>
+  <Logo />
+  <Connect(AddHabit)
+    props={Object {}}
+  />
+  <Nav />
+</Fragment>
+`;

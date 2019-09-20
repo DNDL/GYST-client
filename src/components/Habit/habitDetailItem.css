@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Averia+Serif+Libre%7CJulius+Sans+One&display=swap');
+
+@media only screen 
+and (min-width: 360px) 
+and (max-width: 600px) {
+  .habitInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 30vh;
+    text-align: center;
+  }
+
+    h3 {
+    font-family: "Julius Sans One", sans-serif;
+    text-align: center;
+    margin: 10px 0 10px 0;
+  }
+
+  .progress {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .progressLine {
+    top: 50%;
+  }
+
+  .ulWrapper {
+    margin: 0 auto;
+  }
+
+  li {
+    text-align: center;
+  }
+
+  h6 {
+    margin: 0;
+    font-family: 'Julius Sans One', sans-serif;
+  }
+
+  .ul {
+    margin-top: 20px;
+    padding: 0;
+    overflow: auto;
+    border: 1px solid black;
+    border-radius: 15px;
+    list-style: none;
+    height: 35vh;
+  }
+
+  p {
+    margin: 0;
+    font-weight: lighter;
+    font-family: "Julius Sans One", sans-serif;
+  }
+
+  .habitTitle {
+    margin: 0 auto;
+  }
+
+  .attempt {
+    margin: 10px;
+  }
+
+  .timestamp {
+    font-size: .80em;
+    color: #797979;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px auto;
+    width: 70%;
+  }
+
+  .form {
+    font-style: italic;
+    font-family: 'Julius Sans One', sans-serif;
+  }
+  
+  .formInput {
+    font-family: 'Averia Serif Libre', cursive;
+  }
+}
+
