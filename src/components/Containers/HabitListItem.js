@@ -7,6 +7,8 @@ import { addAttempt } from '../../actions/habitActions';
 import Button from '@material-ui/core/Button';
 import styles from './habitListItem.css';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import TextField from '@material-ui/core/TextField';
+
 
 class HabitListItem extends Component {
   state = {
@@ -41,7 +43,14 @@ class HabitListItem extends Component {
           </div>
         </div>
         <form className={styles.form} onSubmit={ (e) => handleSubmit(e, habit._id, comment) }>
-          <input className={styles.comment}name="comment" onChange={(e) => this.handleChange(e)} placeholder="comment..."></input>
+          <TextField
+            name="comment"
+            id="outlined-dense"
+            label="Comment..."
+            onChange={(e) => this.handleChange(e)}
+            margin="dense"
+            variant="outlined"
+          />
           <Button type="submit" className={styles.button} variant="contained" size="small" color="primary">+</Button>
         </form>
       </section>
