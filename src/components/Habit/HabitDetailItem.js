@@ -7,8 +7,7 @@ import Button from '@material-ui/core/Button';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 function timeConverter(timestamp) {
-  return moment(timestamp)
-    .format('dddd, MMMM Do YYYY, h:mm a');
+  return moment(timestamp).format('dddd, MMMM Do YYYY, h:mm a');
 }
 
 export default function HabitDetailItem({ habit, attempts, handleDelete }) {
@@ -24,54 +23,61 @@ export default function HabitDetailItem({ habit, attempts, handleDelete }) {
   const progress = (attempts.length / habit.goal) * 100;
 
   return (
-
-    <section className ={styles.wrapper}>
-
-      <div className={styles.habitInfo}>
-        <h3 style={{ color: habit.color }}>{habit.title}</h3>
-        <p className={styles.form}>Your why:</p>
-        <p className={styles.formInput}>{habit.why}</p>
-        <p className={styles.form}>Your frequency:</p>
-        <p className={styles.formInput}>{habit.frequency}</p>
-        <p className={styles.form}>Your goal:</p>
-        <p className={styles.formInput}>{habit.goal}</p>
-        <p className={styles.form}>Your current progress:</p>
-        <div className={styles.progress}>
-          <LinearProgress className={styles.progressLine} variant="determinate" value={progress} />
-        </div>
-      </div>
-  
-      <h6>Activity Log:</h6>
-      <div className={styles.ulWrapper}>
-        <ul className={styles.ul}>{attemptsElement}</ul>
-      </div>
-
+    <>
       <div className={styles.actions}>
-        <Link to={{
-          pathname: '/habit/form',
-          state: { habit }
-        }}>
+        <Link
+          to={{
+            pathname: '/habit/form',
+            state: { habit }
+          }}
+        >
           <Button
             className={styles.editButton}
             type="submit"
             variant="contained"
-            size="small" >
-        Edit
+            size="small"
+          >
+            Edit
           </Button>
         </Link>
-        <Link to='/'>
+        <Link to="/">
           <Button
             className={styles.deleteButton}
             type="submit"
             variant="contained"
-            size="small"  
-            onClick={() => handleDelete(habit._id)}>
-        Delete
+            size="small"
+            onClick={() => handleDelete(habit._id)}
+          >
+            Delete
           </Button>
         </Link>
-
       </div>
-    </section>
+
+      <section className={styles.wrapper}>
+        <div className={styles.habitInfo}>
+          <h3 style={{ color: habit.color }}>{habit.title}</h3>
+          <p className={styles.form}>Your why:</p>
+          <p className={styles.formInput}>{habit.why}</p>
+          <p className={styles.form}>Your frequency:</p>
+          <p className={styles.formInput}>{habit.frequency}</p>
+          <p className={styles.form}>Your goal:</p>
+          <p className={styles.formInput}>{habit.goal}</p>
+          <p className={styles.form}>Your current progress:</p>
+          <div className={styles.progress}>
+            <LinearProgress
+              className={styles.progressLine}
+              variant="determinate"
+              value={progress}
+            />
+          </div>
+        </div>
+
+        <h6>Activity Log:</h6>
+        <div className={styles.ulWrapper}>
+          <ul className={styles.ul}>{attemptsElement}</ul>
+        </div>
+      </section>
+    </>
   );
 }
 

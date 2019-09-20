@@ -1,12 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Averia+Serif+Libre%7CJulius+Sans+One&display=swap");
 
-@media only screen 
-and (min-width: 360px) 
-and (max-width: 600px) {
-
+@media only screen and (min-width: 360px) and (max-width: 600px) {
   .section {
     margin: 0 20px 10px 20px;
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: "Julius Sans One", sans-serif;
 
     .header {
       display: flex;
@@ -33,21 +30,20 @@ and (max-width: 600px) {
       border-radius: 100%;
       margin: 0;
       box-shadow: 0;
-      border: .5px solid white;
+      border: 0.5px solid white;
     }
 
     h4 {
-      margin: .5vh;
+      margin: 0.5vh;
       font-size: 1.3rem;
       font-family: "Julius Sans One", sans-serif;
       margin: 10px;
     }
 
     button {
-      background-color: rgb(167,219,216);
+      background-color: rgb(167, 219, 216);
       font-family: "Julius Sans One", sans-serif;
       box-shadow: none;
     }
-
   }
 }

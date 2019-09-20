@@ -4,8 +4,6 @@ import { withRouter } from 'react-router-dom';
 import Slider from '@material-ui/core/Slider';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -40,11 +38,6 @@ function HabitForm(props) {
       setEditing(true);
     }
   }, []);
-
-  const handleChange = ({ target }) => {
-    const prop = target.name === 'days' ? { days: { ...habit.days, [target.value] : target.checked } } : { [target.name] : target.value };
-    updateHabit({ ...habit, ...prop });
-  };
 
   const frequencyLabels = ['daily', 'weekly', 'monthly'];
   const frequencyFieldset = 'frequency';
@@ -104,28 +97,6 @@ function HabitForm(props) {
           valueLabelDisplay="auto"
         />
       </fieldset>
-
-
-      <fieldset className={styles.checkboxes}>
-        <legend>Hold me accountable on</legend>
-        <FormGroup aria-label="position" name="days"  row>
-          {Object.keys(habit.days).map(day => {
-            const shouldBeChecked = habit.days[day];
-            return <FormControlLabel
-              name={'days'}
-              onChange={handleChange}
-              checked={shouldBeChecked}
-              className={styles.checkbox}
-              key={day}
-              value={day}
-              control={<Checkbox color="primary" className={styles.checkbox}/>}
-              label={day}
-              labelPlacement="top"
-            />;
-          })}
-        </FormGroup>
-      </fieldset>
-
 
       <fieldset>
         <legend>Label color</legend>
