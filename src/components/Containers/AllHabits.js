@@ -15,14 +15,12 @@ class AllHabits extends Component {
 
   componentDidMount() {
     this.props.fetch();
-    
   }
 
   render() {
     const { habits } = this.props;
-    return (
-      <HabitList habits={habits}/>
-    );
+    
+    return <HabitList habits={habits}/>;
   }
 }
 
