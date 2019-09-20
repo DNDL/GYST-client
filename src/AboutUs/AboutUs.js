@@ -87,7 +87,6 @@ function AboutUs() {
     </ul>
           
     <Link to={'/'}><HomeIcon 
-      color="black"
       fontSize="large"
     /></Link>
 

@@ -7,22 +7,22 @@ exports[`Nav component renders Nav 1`] = `
   <Link
     to="/"
   >
-    <img
-      src="../../../assets/home.png"
+    <HomeIcon
+      fontSize="large"
     />
   </Link>
   <Link
-    to="/habitForm"
+    to="/habit/form"
   >
-    <img
-      src="../../../assets/add.png"
+    <AddIcon
+      fontSize="large"
     />
   </Link>
   <Link
-    to="/friendsList"
+    to="/aboutus"
   >
-    <img
-      src="../../../assets/multiple-users-silhouette.png"
+    <AboutUsIcon
+      fontSize="large"
     />
   </Link>
 </nav>

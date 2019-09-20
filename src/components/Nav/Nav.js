@@ -31,15 +31,12 @@ export default function Nav() {
     <nav className={styles.nav}>
 
       <Link to={'/'}><HomeIcon 
-        color="black"
         fontSize="large"
       /></Link>
       <Link to={'/habit/form'}><AddIcon
-        color="black"
         fontSize="large"
       /></Link>
       <Link to={'/aboutus'}><AboutUsIcon
-        color="black"
         fontSize="large"
       /></Link>
     </nav>
