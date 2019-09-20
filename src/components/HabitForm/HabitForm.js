@@ -44,9 +44,7 @@ function HabitForm(props) {
 
   const colorLabels = ['red', 'orange', 'green', 'blue', 'purple'];
   const colorFieldset = 'color';
-
-  // controlled component => state inside that dictates value of inputs 
-  // inputs representing of your component's state 
+  
   const createMatrialRadioButtons = (arr, fieldset) => {
     const checkedValue = habit[fieldset];
     return arr.map(buttonValue => (
