@@ -49,7 +49,7 @@ function HabitForm(props) {
   const frequencyLabels = ['daily', 'weekly', 'monthly'];
   const frequencyFieldset = 'frequency';
 
-  const colorLabels = ['red', 'yellow', 'green', 'blue', 'purple'];
+  const colorLabels = ['red', 'orange', 'green', 'blue', 'purple'];
   const colorFieldset = 'color';
 
   const createMatrialRadioButtons = (arr, fieldset) => {
@@ -88,7 +88,7 @@ function HabitForm(props) {
       </fieldset>
 
       <fieldset>
-        <legend>Times per {habit.frequency}</legend>  
+        <legend>{habit.frequency} Goal</legend>  
         <Slider
           defaultValue={habit.goal}
           step={1}
@@ -121,7 +121,6 @@ function HabitForm(props) {
 
       <fieldset>
         <legend>Label color</legend>
-        {/* <FormLabel component="legend">{colorFieldset}</FormLabel> */}
         <RadioGroup className={styles.radio} aria-label="gender" name="color" row>
           {createMatrialRadioButtons(colorLabels, colorFieldset)}
         </RadioGroup>
@@ -140,10 +139,11 @@ function HabitForm(props) {
       
       {/* //Conditionally rendered buttons */}
       { editing &&
-        <Button
+        <Button 
+          className={styles.update}
           type="submit"
           variant="contained"
-          size="small" color="primary"
+          size="small" 
           onClick={() => {
             handleUpdate(habit);
             history.push('/');
@@ -153,9 +153,10 @@ function HabitForm(props) {
       }
       { !editing &&
         <Button
+          className={styles.create}
           type="submit"
           variant="contained"
-          size="small" color="primary"
+          size="small"
           onClick={() => {
             handleSubmit(habit);
             history.push('/');
