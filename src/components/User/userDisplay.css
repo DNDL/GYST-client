@@ -1,12 +1,18 @@
+@import url("https://fonts.googleapis.com/css?family=Averia+Serif+Libre%7CJulius+Sans+One&display=swap");
+
 @media only screen 
 and (min-width: 360px) 
 and (max-width: 600px) {
+
   .section {
+    margin: 0 20px 10px 20px;
+    font-family: 'Julius Sans One', sans-serif;
 
     .header {
       display: flex;
       justify-content: space-between;
-      height: 15vh;
+      height: 10vh;
+
     }
 
     .logout {
@@ -25,21 +31,21 @@ and (max-width: 600px) {
     .img {
       height: 8vh;
       border-radius: 100%;
+      margin: 0;
     }
 
     h4 {
       margin: .5vh;
-      font-family: Arial, Helvetica, sans-serif;
-      font-weight: lighter;
+      font-size: 1.3rem;
+      font-family: "Julius Sans One", sans-serif;
       margin: 10px;
     }
 
-    .logoutButton {
-      background-color: rgb(255, 255, 255);
-      border-radius: 20rem;
-      border-width: .1rem;
-      border-color: rgb(226, 226, 226);
-  }
+    button {
+      background-color: rgb(167,219,216);
+      font-family: "Julius Sans One", sans-serif;
+
+    }
 
   }
 }
