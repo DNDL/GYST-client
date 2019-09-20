@@ -4,7 +4,8 @@ import styles from './logo.css';
 
 export default function Logo() {
   return (
-    <Link to={'/aboutus'}><h1 className={styles.logo}>GYST</h1></Link>
-    
+    <section className={styles.logo}>
+      <Link to={'/aboutus'}><h1>-GYST-</h1></Link>
+    </section>
   );
 }

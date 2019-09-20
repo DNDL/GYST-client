@@ -12,9 +12,8 @@ and (max-width: 600px) {
     text-align: center;
   }
 
-  h3 {
-    font-weight: lighter;
-    font-family: Arial, Helvetica, sans-serif;
+    h3 {
+    font-family: "Julius Sans One", sans-serif;
     text-align: center;
     margin: 10px 0 10px 0;
   }
@@ -54,7 +53,7 @@ and (max-width: 600px) {
   p {
     margin: 0;
     font-weight: lighter;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Julius Sans One", sans-serif;
   }
 
   .habitTitle {
