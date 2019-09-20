@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Averia+Serif+Libre%7CJulius+Sans+One&display=swap');
+
 @media only screen 
 and (min-width: 360px) 
 and (max-width: 600px) {
@@ -5,6 +7,19 @@ and (max-width: 600px) {
   .ul {
     margin: 0;
     padding: 0;
+    overflow: auto;
+    height: 64vh;
+    border: 1px solid white;
+    border-radius: 15px;
+    box-shadow: 0 0 5px;
+  }
+
+  .p {
+    font-family: 'Julius Sans One', sans-serif;
+    font-weight: 800;
+    text-align: center;
+    margin: 0;
+    padding: 10%;
     overflow: auto;
     height: 64vh;
     border: 1px solid white;

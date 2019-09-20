@@ -1,26 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Averia+Serif+Libre%7CJulius+Sans+One&display=swap');
+
 .HabitForm {
   display: flex;
   flex-direction: column;
+  font-family: 'Julius Sans One', sans-serif;
 
   label {
     margin: 3px;
+    font-family: 'Julius Sans One', sans-serif;
+  }
+
+  span {
+    font-family: 'Julius Sans One', sans-serif;
   }
 
   fieldset {
     border: 1px solid black;
     border-radius: 10px;
     padding-bottom: 0px;
+    margin-bottom: 3px;
   }
   
   .checkbox {
+    text-align: center;
     display: flex;
     justify-content: space-evenly; 
     margin: 0;
   }
 
   .radio {
+    text-align: center;
     display: flex;
     justify-content: space-evenly; 
+    
+  }
+
+  .update {
+    background-color: rgb(167,219,216);
+  }
+
+  .create {
+    background-color: rgb(240,120,24);
   }
 
 }

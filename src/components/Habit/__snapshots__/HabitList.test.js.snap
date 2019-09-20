@@ -1,3 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HabitList component renders HabitList 1`] = `<ul />`;
+exports[`HabitList component renders HabitList 1`] = `
+<Fragment>
+  <section>
+    <p
+      className="p"
+    >
+      It looks like you don't have any habits yet.
+      <br />
+      <br />
+      Click the + button below to add some!
+    </p>
+  </section>
+</Fragment>
+`;
