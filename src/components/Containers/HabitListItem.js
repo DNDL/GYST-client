@@ -37,7 +37,7 @@ class HabitListItem extends Component {
             </Link>
           </div>
           <div className={styles.progress}>
-            <LinearProgress className={styles.progressLine}variant="determinate" value={progress} />
+            <LinearProgress className={styles.progressLine} variant="determinate" value={progress} />
           </div>
         </div>
         <form className={styles.form} onSubmit={ (e) => handleSubmit(e, habit._id, comment) }>
