@@ -46,12 +46,14 @@
     border: 1px solid black;
     border-radius: 15px;
     list-style: none;
-    height: 28vh;
+    height: 19vh;
     margin: 0 auto;
     width: 80vw;
 
     li:nth-child(odd) {
       background-color: #7979792c;
+      margin: 10px auto;
+      padding: 5px;
     }
   }
 
@@ -61,8 +63,8 @@
     border: 1px solid black;
     border-radius: 15px;
     list-style: none;
-    height: 81vh;
-    margin: 0;
+    height: 64vh;
+    margin-top: 10px;
   }
 
   p {
@@ -100,7 +102,9 @@
   .actions {
     display: flex;
     justify-content: space-evenly;
-    margin: 10px auto;
+    align-items: center;
+    height: 10vh;
+    margin: 0 auto;
     width: 70%;
 
     .deleteButton {

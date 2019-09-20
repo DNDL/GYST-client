@@ -24,7 +24,6 @@ and (max-width: 600px) {
     }
   
   img {
-    border: 2px solid rgb(122, 121, 121);
     border-radius: 15px;
     margin-top: 1vw;
   }

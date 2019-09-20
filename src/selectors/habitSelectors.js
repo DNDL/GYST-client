@@ -10,10 +10,9 @@ export const getHabitById = (state, _id) => {
 export const getAllAttempts = state => state.habits.attempts;
 
 export const getAttemptsByHabitId = (state, id) => {
-  return state.habits.attempts
-    .filter((attempt) => {
-      return attempt.habit === id;
-    });
+  return state.habits.attempts.filter(attempt => {
+    return attempt.habit === id;
+  });
 };
 
 export const getValidAttemptsByHabit = (state, props) => {
