@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import styles from './nav.css';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
-// TODO insert real paths into Links
-
 export default function Nav() {
 
   function HomeIcon(props) {
@@ -31,15 +29,16 @@ export default function Nav() {
 
   return (
     <nav className={styles.nav}>
+
       <Link to={'/'}><HomeIcon 
         color="black"
         fontSize="large"
       /></Link>
-      <Link to={'/habitForm'}><AddIcon
+      <Link to={'/habit/form'}><AddIcon
         color="black"
         fontSize="large"
       /></Link>
-      <Link to={'/friendsList'}><AboutUsIcon
+      <Link to={'/aboutus'}><AboutUsIcon
         color="black"
         fontSize="large"
       /></Link>

@@ -12,7 +12,6 @@ and (max-width: 600px) {
       display: flex;
       justify-content: space-between;
       height: 10vh;
-
     }
 
     .logout {
@@ -20,6 +19,7 @@ and (max-width: 600px) {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      box-shadow: none;
     }
     .user {
       display: flex;
@@ -32,6 +32,8 @@ and (max-width: 600px) {
       height: 8vh;
       border-radius: 100%;
       margin: 0;
+      box-shadow: 0;
+      border: .5px solid white;
     }
 
     h4 {
@@ -44,7 +46,7 @@ and (max-width: 600px) {
     button {
       background-color: rgb(167,219,216);
       font-family: "Julius Sans One", sans-serif;
-
+      box-shadow: none;
     }
 
   }
