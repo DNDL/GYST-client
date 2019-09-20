@@ -9,9 +9,8 @@ and (max-width: 600px) {
     padding: 0;
     overflow: auto;
     height: 64vh;
-    border: 1px solid white;
+    border: 1px solid black;
     border-radius: 15px;
-    box-shadow: 0 0 5px;
   }
 
   .p {

@@ -34,7 +34,7 @@ class HabitListItem extends Component {
       <section className={styles.habitListItem}>
         <div className={styles.habit}>
           <div className={styles.link}>
-            <Link to={`/habitDetail/${habit._id}`}>
+            <Link to={`/habit/detail/${habit._id}`}>
               <p style={{ color: habit.color }}>{habit.title}</p>
             </Link>
           </div>

@@ -8,8 +8,8 @@ export default function Nav() {
   return (
     <nav className={styles.nav}>
       <Link to={'/'}><img src="../../../assets/home.png"></img></Link>
-      <Link to={'/habitForm'}><img src="../../../assets/add.png"></img></Link>
-      <Link to={'/friendsList'}><img src="../../../assets/multiple-users-silhouette.png"></img></Link>
+      <Link to={'/habit/form'}><img src="../../../assets/add.png"></img></Link>
+      <Link to={'/aboutus'}><img src="../../../assets/multiple-users-silhouette.png"></img></Link>
     </nav>
   );
 }

@@ -17,15 +17,14 @@ export default function HabitDetailItem({ habit, attempts, handleDelete }) {
   const attemptsElement = attempts.map(attempt => (
     <li className={styles.attempt} key={attempt.createdAt}>
       <p className={styles.timestamp}>{timeConverter(attempt.createdAt)}</p>
-      <p className={styles.form}>comment:</p>
-      <p>{attempt.comment}</p>
+      <p className={styles.comment}>{attempt.comment}</p>
     </li>
   ));
 
   const progress = (attempts.length / habit.goal) * 100;
 
   return (
-    <section>
+    <section className ={styles.wrapper}>
       <div className={styles.habitInfo}>
         <h3 style={{ color: habit.color }}>{habit.title}</h3>
         <p className={styles.form}>Your why:</p>
@@ -40,14 +39,14 @@ export default function HabitDetailItem({ habit, attempts, handleDelete }) {
         </div>
       </div>
   
-      <h6>Comment Log:</h6>
+      <h6>Activity Log:</h6>
       <div className={styles.ulWrapper}>
         <ul className={styles.ul}>{attemptsElement}</ul>
       </div>
 
       <div className={styles.actions}>
         <Link to={{
-          pathname: '/habitForm',
+          pathname: '/habit/form',
           state: { habit }
         }}>
           <Button
