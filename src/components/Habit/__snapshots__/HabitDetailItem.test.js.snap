@@ -1,68 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HabitDetailItem component renders HabitDetailItem 1`] = `
-<section
-  className="wrapper"
->
-  <div
-    className="habitInfo"
-  >
-    <h3
-      style={
-        Object {
-          "color": undefined,
-        }
-      }
-    />
-    <p
-      className="form"
-    >
-      Your why:
-    </p>
-    <p
-      className="formInput"
-    />
-    <p
-      className="form"
-    >
-      Your frequency:
-    </p>
-    <p
-      className="formInput"
-    />
-    <p
-      className="form"
-    >
-      Your goal:
-    </p>
-    <p
-      className="formInput"
-    />
-    <p
-      className="form"
-    >
-      Your current progress:
-    </p>
-    <div
-      className="progress"
-    >
-      <WithStyles(ForwardRef(LinearProgress))
-        className="progressLine"
-        value={NaN}
-        variant="determinate"
-      />
-    </div>
-  </div>
-  <h6>
-    Activity Log:
-  </h6>
-  <div
-    className="ulWrapper"
-  >
-    <ul
-      className="ul"
-    />
-  </div>
+<Fragment>
   <div
     className="actions"
   >
@@ -99,5 +38,68 @@ exports[`HabitDetailItem component renders HabitDetailItem 1`] = `
       </WithStyles(ForwardRef(Button))>
     </Link>
   </div>
-</section>
+  <section
+    className="wrapper"
+  >
+    <div
+      className="habitInfo"
+    >
+      <h3
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+      />
+      <p
+        className="form"
+      >
+        Your why:
+      </p>
+      <p
+        className="formInput"
+      />
+      <p
+        className="form"
+      >
+        Your frequency:
+      </p>
+      <p
+        className="formInput"
+      />
+      <p
+        className="form"
+      >
+        Your goal:
+      </p>
+      <p
+        className="formInput"
+      />
+      <p
+        className="form"
+      >
+        Your current progress:
+      </p>
+      <div
+        className="progress"
+      >
+        <WithStyles(ForwardRef(LinearProgress))
+          className="progressLine"
+          value={NaN}
+          variant="determinate"
+        />
+      </div>
+    </div>
+    <h6>
+      Activity Log:
+    </h6>
+    <div
+      className="ulWrapper"
+    >
+      <ul
+        className="ul"
+      />
+    </div>
+  </section>
+</Fragment>
 `;
