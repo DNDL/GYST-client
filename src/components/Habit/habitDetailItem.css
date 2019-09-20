@@ -1,9 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Averia+Serif+Libre%7CJulius+Sans+One&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Averia+Serif+Libre%7CJulius+Sans+One&display=swap");
 
-@media only screen 
-and (min-width: 360px) 
-and (max-width: 600px) {
- 
+@media only screen and (min-width: 360px) and (max-width: 600px) {
   .habitInfo {
     display: flex;
     flex-direction: column;
@@ -38,7 +35,7 @@ and (max-width: 600px) {
 
   h6 {
     margin: 20px auto 10px auto;
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: "Julius Sans One", sans-serif;
     text-align: center;
     font-size: 1rem;
   }
@@ -83,41 +80,35 @@ and (max-width: 600px) {
   }
 
   .timestamp {
-    font-size: .80em;
+    font-size: 0.8em;
     color: #797979;
   }
 
-  
-
   .form {
     font-style: italic;
-    font-family: 'Julius Sans One', sans-serif;
-  }
-  
-  .formInput {
-    font-family: 'Averia Serif Libre', cursive;
+    font-family: "Julius Sans One", sans-serif;
   }
 
+  .formInput {
+    font-family: "Averia Serif Libre", cursive;
+  }
 
   .comment {
-    font-family: 'Averia Serif Libre', cursive;
-    font-size: .75em;
-
-  
-}
-.actions {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 10px auto;
-  width: 70%;
-
-  .deleteButton {
-    background-color: rgb(209,67,52);
+    font-family: "Averia Serif Libre", cursive;
+    font-size: 0.75em;
   }
+  .actions {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px auto;
+    width: 70%;
 
-  .editButton {
-    background-color: rgb(167,219,216);
+    .deleteButton {
+      background-color: rgb(209, 67, 52);
+    }
 
+    .editButton {
+      background-color: rgb(167, 219, 216);
+    }
   }
 }
-
