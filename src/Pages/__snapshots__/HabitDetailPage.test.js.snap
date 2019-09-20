@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HabitDetailPage component renders HabitDetailPage 1`] = `
+<Fragment>
+  <Logo />
+  <Connect(Habit)
+    props={
+      Object {
+        "props": Object {},
+      }
+    }
+  />
+  <Nav />
+</Fragment>
+`;

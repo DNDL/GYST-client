@@ -4,6 +4,7 @@ import styles from './habitDetailItem.css';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 function timeConverter(timestamp) {
   return moment(timestamp)
@@ -11,57 +12,68 @@ function timeConverter(timestamp) {
 }
 
 export default function HabitDetailItem({ habit, attempts, handleDelete }) {
-
   if(!habit) return null;
 
   const attemptsElement = attempts.map(attempt => (
     <li className={styles.attempt} key={attempt.createdAt}>
       <p className={styles.timestamp}>{timeConverter(attempt.createdAt)}</p>
-      <p>comment: {attempt.comment}</p>
+      <p className={styles.form}>comment:</p>
+      <p>{attempt.comment}</p>
     </li>
   ));
-  
-  return (
-    <section className={styles.section}>
-      <Link to={{
-        pathname: '/habitForm',
-        state: { habit }
-      }}>
-        <Button
-          type="submit"
-          variant="contained"
-          size="small" color="primary">
-        Edit Habit
-        </Button>
-      </Link>
 
-      <Link to='/'>
-        <Button
-          type="submit"
-          variant="contained"
-          size="small" color="primary" 
-          onClick={() => handleDelete(habit._id)}>Delete Habit</Button>
-      </Link>
+  const progress = (attempts.length / habit.goal) * 100;
+
+  return (
+    <section>
       <div className={styles.habitInfo}>
-        <div className={styles.habitTitle}>
-          <h3 style={{ color: habit.color }}>{habit.title}</h3>
-        </div>
-        <div className={styles.why}>
-          <p>Your why: </p>
-          <p>{habit.why}</p>
+        <h3 style={{ color: habit.color }}>{habit.title}</h3>
+        <p className={styles.form}>Your why:</p>
+        <p className={styles.formInput}>{habit.why}</p>
+        <p className={styles.form}>Your frequency:</p>
+        <p className={styles.formInput}>{habit.frequency}</p>
+        <p className={styles.form}>Your goal:</p>
+        <p className={styles.formInput}>{habit.goal}</p>
+        <p className={styles.form}>Your current progress:</p>
+        <div className={styles.progress}>
+          <LinearProgress className={styles.progressLine} variant="determinate" value={progress} />
         </div>
       </div>
   
+      <h6>Comment Log:</h6>
       <div className={styles.ulWrapper}>
         <ul className={styles.ul}>{attemptsElement}</ul>
       </div>
 
+      <div className={styles.actions}>
+        <Link to={{
+          pathname: '/habitForm',
+          state: { habit }
+        }}>
+          <Button
+            type="submit"
+            variant="contained"
+            size="small" color="primary">
+        Edit
+          </Button>
+        </Link>
+        <Link to='/'>
+          <Button
+            type="submit"
+            variant="contained"
+            size="small" color="primary" 
+            onClick={() => handleDelete(habit._id)}>
+        Delete
+          </Button>
+        </Link>
 
+      </div>
     </section>
   );
 }
 
 HabitDetailItem.propTypes = {
   habit: PropTypes.object,
-  attempts: PropTypes.array
+  attempts: PropTypes.array,
+  handleDelete: PropTypes.func
 };

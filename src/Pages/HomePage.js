@@ -28,4 +28,3 @@ HomePage.propTypes = {
 };
 
 export default HomePage;
-
