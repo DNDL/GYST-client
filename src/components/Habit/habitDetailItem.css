@@ -3,6 +3,7 @@
 @media only screen 
 and (min-width: 360px) 
 and (max-width: 600px) {
+ 
   .habitInfo {
     display: flex;
     flex-direction: column;
@@ -12,7 +13,7 @@ and (max-width: 600px) {
     text-align: center;
   }
 
-    h3 {
+  h3 {
     font-family: "Julius Sans One", sans-serif;
     text-align: center;
     margin: 10px 0 10px 0;
@@ -69,12 +70,7 @@ and (max-width: 600px) {
     color: #797979;
   }
 
-  .actions {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 10px auto;
-    width: 70%;
-  }
+  
 
   .form {
     font-style: italic;
@@ -83,6 +79,22 @@ and (max-width: 600px) {
   
   .formInput {
     font-family: 'Averia Serif Libre', cursive;
+  }
+
+  
+}
+.actions {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px auto;
+  width: 70%;
+
+  .deleteButton {
+    background-color: rgb(209,67,52);
+  }
+
+  .editButton {
+    background-color: rgb(167,219,216);
   }
 }
 

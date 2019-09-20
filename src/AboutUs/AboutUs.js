@@ -1,8 +1,18 @@
 import React from 'react';
 import styles from './styles.css';
 import { Link } from 'react-router-dom';
+import SvgIcon from '@material-ui/core/SvgIcon';
+
 
 function AboutUs() {
+  function HomeIcon(props) {
+    return (
+      <SvgIcon {...props}>
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </SvgIcon>
+    );
+  }
+
   return (<>
   <section className={styles.container}>
 
@@ -49,7 +59,10 @@ function AboutUs() {
 
     </ul>
 
-    <Link to={'/'}><img className={styles.home} src="../../../assets/home.png"></img></Link>
+    <Link to={'/'}><HomeIcon 
+      color="black"
+      fontSize="large"
+    /></Link>
   </section>
   </>);
 }
