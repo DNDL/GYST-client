@@ -52,14 +52,18 @@ function HabitForm(props) {
   const colorLabels = ['red', 'yellow', 'green', 'blue', 'purple'];
   const colorFieldset = 'color';
 
+  // controlled component => state inside that dictates value of inputs 
+  // inputs representing of your component's state 
   const createMatrialRadioButtons = (arr, fieldset) => {
-    return arr.map(a => (
-      <label key={a}>
-        {a}
+    const checkedValue = habit[fieldset];
+    return arr.map(buttonValue => (
+      <label key={buttonValue}>
+        {buttonValue}
         <RadioGroup aria-label={fieldset} name={fieldset}></RadioGroup>
         <FormControlLabel 
-          onChange={() => updateHabit({ ...habit, [fieldset]: `${a}` })}
-          value={a}
+          checked={checkedValue === buttonValue}
+          onChange={() => updateHabit({ ...habit, [fieldset]: `${buttonValue}` })}
+          value={buttonValue}
           control={<Radio />} 
           labelPlacement="top" />
         <RadioGroup/>
@@ -68,6 +72,7 @@ function HabitForm(props) {
   };
 
   return (
+    
     <form className={styles.HabitForm}>
       <TextField
         id="outlined-dense"
@@ -90,7 +95,7 @@ function HabitForm(props) {
       <fieldset>
         <legend>Times per {habit.frequency}</legend>  
         <Slider
-          defaultValue={habit.goal}
+          value={habit['goal']}
           step={1}
           marks
           min={1}
@@ -104,17 +109,20 @@ function HabitForm(props) {
       <fieldset className={styles.checkboxes}>
         <legend>Hold me accountable on</legend>
         <FormGroup aria-label="position" name="days"  row>
-          {Object.keys(habit.days).map(day => (
-            <FormControlLabel
+          {Object.keys(habit.days).map(day => {
+            const shouldBeChecked = habit.days[day];
+            return <FormControlLabel
+              name={'days'}
               onChange={handleChange}
+              checked={shouldBeChecked}
               className={styles.checkbox}
               key={day}
-              value="top"
+              value={day}
               control={<Checkbox color="primary" className={styles.checkbox}/>}
               label={day}
               labelPlacement="top"
-            />
-          ))}
+            />;
+          })}
         </FormGroup>
       </fieldset>
 
