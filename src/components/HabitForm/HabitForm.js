@@ -44,7 +44,7 @@ function HabitForm(props) {
 
   const colorLabels = ['red', 'orange', 'green', 'blue', 'purple'];
   const colorFieldset = 'color';
-  
+
   const createMatrialRadioButtons = (arr, fieldset) => {
     const checkedValue = habit[fieldset];
     return arr.map(buttonValue => (
@@ -98,7 +98,7 @@ function HabitForm(props) {
 
       <fieldset>
         <legend>Label color</legend>
-        <RadioGroup className={styles.radio} aria-label="gender" name="color" row>
+        <RadioGroup className={styles.radio} aria-label="color" name="color" row>
           {createMatrialRadioButtons(colorLabels, colorFieldset)}
         </RadioGroup>
       </fieldset>
@@ -114,7 +114,6 @@ function HabitForm(props) {
         variant="outlined"
       />
       
-      {/* //Conditionally rendered buttons */}
       { editing &&
         <Button 
           className={styles.update}
