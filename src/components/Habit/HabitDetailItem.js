@@ -25,7 +25,7 @@ export default function HabitDetailItem({ habit, attempts, handleDelete }) {
   const progress = (attempts.length / habit.goal) * 100;
 
   return (
-    <section>
+    <section className={styles.parent}>
       <div className={styles.habitInfo}>
         <h3 style={{ color: habit.color }}>{habit.title}</h3>
         <p className={styles.form}>Your why:</p>
@@ -51,17 +51,19 @@ export default function HabitDetailItem({ habit, attempts, handleDelete }) {
           state: { habit }
         }}>
           <Button
+            className={styles.editButton}
             type="submit"
             variant="contained"
-            size="small" color="primary">
+            size="small" >
         Edit
           </Button>
         </Link>
         <Link to='/'>
           <Button
+            className={styles.deleteButton}
             type="submit"
             variant="contained"
-            size="small" color="primary" 
+            size="small"  
             onClick={() => handleDelete(habit._id)}>
         Delete
           </Button>

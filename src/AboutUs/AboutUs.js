@@ -1,15 +1,23 @@
 import React from 'react';
 import styles from './styles.css';
 import { Link } from 'react-router-dom';
+import SvgIcon from '@material-ui/core/SvgIcon';
 import githubIcon from '../../assets/github-icon.png';
 import linkedinIcon from '../../assets/linkedin-icon.png';
 import dirt from '../../assets/dirt.jpeg';
 import noah from '../../assets/noah.jpeg';
 import danny from '../../assets/danny.png';
 import lili from '../../assets/lili.jpeg';
-import homeIcon from '../../assets/home.png';
 
 function AboutUs() {
+  function HomeIcon(props) {
+    return (
+      <SvgIcon {...props}>
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </SvgIcon>
+    );
+  }
+
   return (<>
   <section className={styles.container}>
 
@@ -77,8 +85,12 @@ function AboutUs() {
       </li>
 
     </ul>
+          
+    <Link to={'/'}><HomeIcon 
+      color="black"
+      fontSize="large"
+    /></Link>
 
-    <Link to={'/'}><img className={styles.home} src={homeIcon}></img></Link>
   </section>
   </>);
 }
