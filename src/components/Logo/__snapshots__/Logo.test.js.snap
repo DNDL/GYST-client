@@ -1,13 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Logo component renders Logo 1`] = `
-<Link
-  to="/aboutus"
+<section
+  className="logo"
 >
-  <h1
-    className="logo"
+  <Link
+    to="/aboutus"
   >
-    GYST
-  </h1>
-</Link>
+    <h1>
+      -GYST-
+    </h1>
+  </Link>
+</section>
 `;

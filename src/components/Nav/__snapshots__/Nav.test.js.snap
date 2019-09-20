@@ -8,7 +8,6 @@ exports[`Nav component renders Nav 1`] = `
     to="/"
   >
     <img
-      className="img"
       src="../../../assets/home.png"
     />
   </Link>
@@ -16,7 +15,6 @@ exports[`Nav component renders Nav 1`] = `
     to="/habitForm"
   >
     <img
-      className="img"
       src="../../../assets/add.png"
     />
   </Link>
@@ -24,7 +22,6 @@ exports[`Nav component renders Nav 1`] = `
     to="/friendsList"
   >
     <img
-      className="img"
       src="../../../assets/multiple-users-silhouette.png"
     />
   </Link>
