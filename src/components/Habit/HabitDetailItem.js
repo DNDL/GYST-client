@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from '../Containers/habitDetailItem.css';
+import styles from './habitDetailItem.css';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
