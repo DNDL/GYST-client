@@ -7,9 +7,9 @@ import styles from './nav.css';
 export default function Nav() {
   return (
     <nav className={styles.nav}>
-      <Link to={'/'}><img className={styles.img} src="../../../assets/home.png"></img></Link>
-      <Link to={'/habitForm'}><img className={styles.img} src="../../../assets/add.png"></img></Link>
-      <Link to={'/friendsList'}><img className={styles.img} src="../../../assets/multiple-users-silhouette.png"></img></Link>
+      <Link to={'/'}><img src="../../../assets/home.png"></img></Link>
+      <Link to={'/habitForm'}><img src="../../../assets/add.png"></img></Link>
+      <Link to={'/friendsList'}><img src="../../../assets/multiple-users-silhouette.png"></img></Link>
     </nav>
   );
 }
