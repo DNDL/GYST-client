@@ -5,7 +5,7 @@ exports[`Logo component renders Logo 1`] = `
   className="logo"
 >
   <Link
-    to="/aboutus"
+    to="/"
   >
     <h1>
       -GYST-
