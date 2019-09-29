@@ -1,49 +1,56 @@
 @import url("https://fonts.googleapis.com/css?family=Averia+Serif+Libre%7CJulius+Sans+One&display=swap");
 
+
 @media only screen and (min-width: 360px) and (max-width: 600px) {
   .section {
     margin: 0 20px 10px 20px;
-    font-family: "Julius Sans One", sans-serif;
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      height: 10vh;
-    }
-
-    .logout {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: none;
-    }
-    .user {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 25vw;
-    }
-
-    .img {
-      height: 8vh;
-      border-radius: 100%;
-      margin: 0;
-      box-shadow: 0;
-      border: 0.5px solid white;
-    }
-
-    h4 {
-      margin: 0.5vh;
-      font-size: 1.3rem;
-      font-family: "Julius Sans One", sans-serif;
-      margin: 10px;
-    }
-
-    button {
-      background-color: rgb(167, 219, 216);
-      font-family: "Julius Sans One", sans-serif;
-      box-shadow: none;
-    }
   }
 }
+
+.section {
+  width: 360px;
+  margin: 0 auto 10px auto;
+  font-family: "Julius Sans One", sans-serif;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+  }
+
+  .logout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+  }
+  .user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 25vw;
+  }
+
+  .img {
+    height: 8vh;
+    border-radius: 100%;
+    margin: 0;
+    box-shadow: 0;
+    border: 0.5px solid white;
+  }
+
+  h4 {
+    margin: 0.5vh;
+    font-size: 1.3rem;
+    font-family: "Julius Sans One", sans-serif;
+    margin: 10px;
+  }
+
+  button {
+    background-color: rgb(167, 219, 216);
+    font-family: "Julius Sans One", sans-serif;
+    box-shadow: none;
+  }
+}
+

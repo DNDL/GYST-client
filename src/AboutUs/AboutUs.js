@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.css';
+import styles from './aboutUs.css';
 import { Link } from 'react-router-dom';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import githubIcon from '../../assets/github-icon.png';
