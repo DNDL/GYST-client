@@ -63,7 +63,6 @@ function HabitForm(props) {
   };
 
   return (
-    
     <form className={styles.HabitForm}>
       <TextField
         id="outlined-dense"
