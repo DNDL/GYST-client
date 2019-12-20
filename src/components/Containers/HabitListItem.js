@@ -9,7 +9,6 @@ import styles from './habitListItem.css';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import TextField from '@material-ui/core/TextField';
 
-
 class HabitListItem extends Component {
   state = {
     comment: ''

@@ -1,55 +1,51 @@
 @import url("https://fonts.googleapis.com/css?family=Averia+Serif+Libre%7CJulius+Sans+One&display=swap");
 
-@media only screen 
-and (min-width: 360px) 
-and (max-width: 600px) {
-
-  .habitListItem {
-    width: 90%;
-    margin: 30px auto;
-    button {
-      background-color: rgb(243,134,48);
-      box-shadow: none;
-    }
+.habitListItem {
+  max-width: 360px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+  button {
+    background-color: rgb(243,134,48);
+    box-shadow: none;
   }
+}
 
-  .form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px auto;
-  }
-  .habit {
-    width: 80%;
-    display: flex;
-    margin: 0 auto;
-    font-family: "Julius Sans One", sans-serif;
-  }
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px auto;
+}
+.habit {
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+  font-family: "Julius Sans One", sans-serif;
+}
 
-  .comment {
-    border: .5px solid black;
-    border-radius: 15px;
-    box-shadow: 0 0 5px black;
-    width: 70%;
-    height: 4vh;
-    font-family: "Julius Sans One", sans-serif;
+.comment {
+  border: .5px solid black;
+  border-radius: 15px;
+  box-shadow: 0 0 5px black;
+  width: 70%;
+  height: 4vh;
+  font-family: "Julius Sans One", sans-serif;
 
-  }
+}
 
-  ::-webkit-input-placeholder {
-    text-align: center;
- }
+::-webkit-input-placeholder {
+  text-align: center;
+}
 
-  .progress { 
-    width: 50%;
-  }
+.progress { 
+  width: 50%;
+}
 
-  .progressLine {
-    top: 50%;
-  }
+.progressLine {
+  top: 50%;
+}
 
-  .link {
-    width: 50%;
-  }
-
+.link {
+  width: 50%;
 }

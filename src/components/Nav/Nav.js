@@ -4,7 +4,6 @@ import styles from './nav.css';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 export default function Nav() {
-
   function HomeIcon(props) {
     return (
       <SvgIcon {...props}>
@@ -12,6 +11,7 @@ export default function Nav() {
       </SvgIcon>
     );
   }
+
   function AddIcon(props) {
     return (
       <SvgIcon {...props}>
@@ -19,6 +19,7 @@ export default function Nav() {
       </SvgIcon>
     );
   }
+  
   function AboutUsIcon(props) {
     return (
       <SvgIcon {...props}>
@@ -29,7 +30,6 @@ export default function Nav() {
 
   return (
     <nav className={styles.nav}>
-
       <Link to={'/'}><HomeIcon 
         fontSize="large"
       /></Link>

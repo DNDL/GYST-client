@@ -3,7 +3,6 @@ import { useAuth0 } from '../../Auth0Provider';
 import styles from './userDisplay.css';
 import Button from '@material-ui/core/Button';
 
-
 export default function UserDisplay() {
   const { isAuthenticated, loading, user, auth0Client } = useAuth0();
   const logout = () => auth0Client.logout();

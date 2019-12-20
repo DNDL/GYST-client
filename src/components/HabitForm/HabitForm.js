@@ -45,8 +45,6 @@ function HabitForm(props) {
   const colorLabels = ['red', 'orange', 'green', 'blue', 'purple'];
   const colorFieldset = 'color';
 
-  // controlled component => state inside that dictates value of inputs 
-  // inputs representing of your component's state 
   const createMatrialRadioButtons = (arr, fieldset) => {
     const checkedValue = habit[fieldset];
     return arr.map(buttonValue => (
@@ -65,7 +63,6 @@ function HabitForm(props) {
   };
 
   return (
-    
     <form className={styles.HabitForm}>
       <TextField
         id="outlined-dense"
@@ -100,7 +97,7 @@ function HabitForm(props) {
 
       <fieldset>
         <legend>Label color</legend>
-        <RadioGroup className={styles.radio} aria-label="gender" name="color" row>
+        <RadioGroup className={styles.radio} aria-label="color" name="color" row>
           {createMatrialRadioButtons(colorLabels, colorFieldset)}
         </RadioGroup>
       </fieldset>
@@ -116,7 +113,6 @@ function HabitForm(props) {
         variant="outlined"
       />
       
-      {/* //Conditionally rendered buttons */}
       { editing &&
         <Button 
           className={styles.update}

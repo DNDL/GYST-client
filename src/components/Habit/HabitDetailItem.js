@@ -23,7 +23,7 @@ export default function HabitDetailItem({ habit, attempts, handleDelete }) {
   const progress = (attempts.length / habit.goal) * 100;
 
   return (
-    <>
+    <section className={styles.desktop}>
       <div className={styles.actions}>
         <Link
           to={{
@@ -77,7 +77,8 @@ export default function HabitDetailItem({ habit, attempts, handleDelete }) {
           <ul className={styles.ul}>{attemptsElement}</ul>
         </div>
       </section>
-    </>
+      
+    </section>
   );
 }
 

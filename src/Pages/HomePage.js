@@ -7,13 +7,12 @@ import Logo from '../components/Logo/Logo';
 
 function HomePage() {
   return (
-    <>
+    <section>
       <Logo />
       <UserDisplay />
-      {/* {props.match.params.id ? <FriendDisplay friend={props.match.params.id} /> : <UserDisplay/> } */}
       <AllHabits/>
       <Nav />
-    </>
+    </section>
   );
 }
 
